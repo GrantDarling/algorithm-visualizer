@@ -7,20 +7,25 @@ export const Grid = ({ rows, columns }: GridProps) => {
   const grid: number[][] = [];
 
   for (let column: number = 0; column < columns; column++) {
-    let column_arr = [];
+    let temp_column = [];
     for (let row: number = 0; row < rows; row++) {
-      column_arr.push(row);
+      temp_column.push(row);
     }
-    grid.push(column_arr);
+    grid.push(temp_column);
   }
 
   return (
+    // create column component and a row component within it
     <div id="grid-container">
-      {grid.map((row) => {
+      {grid.map((row, idx) => {
         return (
-          <div className="column">
-            {row.map((node) => {
-              return <div className="node">{node}</div>;
+          <div key={idx} className="column">
+            {row.map((node, idx) => {
+              return (
+                <div key={idx} className="node">
+                  {node}
+                </div>
+              );
             })}
           </div>
         );
