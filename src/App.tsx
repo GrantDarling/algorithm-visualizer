@@ -3,7 +3,7 @@ import "./App.css";
 import { Grid } from "./algorithm-visualizer/grid";
 
 function App() {
-  return <Grid rows={1} columns={2} />;
+  return <Grid rows={4} columns={2} />;
 }
 
 export default App;

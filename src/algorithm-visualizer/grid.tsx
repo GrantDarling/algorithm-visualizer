@@ -6,17 +6,24 @@ type GridProps = {
 };
 
 export const Grid = ({ rows, columns }: GridProps) => {
-  const a = [rows, columns];
+  const grid: number[][] = [];
+
+  for (let row: number = 0; row < rows; row++) {
+    for (let column: number = 0; column < columns; column++) {
+      grid.push([row, column]);
+    }
+  }
+
+  console.log(grid);
   return (
-    <aside>
-      {a.map((el, idx) => {
+    <div id="grid-container">
+      {grid.map((node, idx) => {
         return (
           <div key={idx} className="node">
-            {el}
+            {node}
           </div>
         );
       })}
-      <h1>{a}</h1>
-    </aside>
+    </div>
   );
 };
