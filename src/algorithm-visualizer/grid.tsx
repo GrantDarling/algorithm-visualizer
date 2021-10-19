@@ -1,5 +1,3 @@
-import React from "react"; // we need this to make JSX compile
-
 type GridProps = {
   rows: number;
   columns: number;
@@ -8,22 +6,35 @@ type GridProps = {
 export const Grid = ({ rows, columns }: GridProps) => {
   const grid: number[][] = [];
 
-  for (let row: number = 0; row < rows; row++) {
-    for (let column: number = 0; column < columns; column++) {
-      grid.push([row, column]);
+  for (let column: number = 0; column < columns; column++) {
+    let column_arr = [];
+    for (let row: number = 0; row < rows; row++) {
+      column_arr.push(row);
     }
+    grid.push(column_arr);
   }
 
-  console.log(grid);
   return (
     <div id="grid-container">
-      {grid.map((node, idx) => {
+      {grid.map((row) => {
         return (
-          <div key={idx} className="node">
-            {node}
+          <div className="column">
+            {row.map((node) => {
+              return <div className="node">{node}</div>;
+            })}
           </div>
         );
       })}
     </div>
   );
 };
+
+// {
+//   grid.map((row, idx) => {
+//     return (
+//       <div key={idx} className="node" data-row={row}>
+//         {row}
+//       </div>
+//     );
+//   });
+// }
