@@ -1,4 +1,4 @@
-import { Column } from "./column";
+import { SortingColumn } from "./sorting/sorting-column";
 
 type GridProps = {
   rows: number;
@@ -18,7 +18,7 @@ export const Grid = ({ rows, columns }: GridProps) => {
 
   return (
     <div id="grid-container">
-      <Column grid={grid} length={5} />
+      <SortingColumn grid={grid} length={0} />
     </div>
   );
 };
