@@ -19,5 +19,3 @@ describe("getRandomInteger: gets random integer correctly", () => {
     expect(randomInteger).toBeLessThanOrEqual(10);
   });
 });
-
-//    const { container } = render(<Grid columns={1} rows={1} />);

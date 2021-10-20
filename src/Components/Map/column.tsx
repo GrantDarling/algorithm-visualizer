@@ -65,7 +65,6 @@ export const Column = ({ grid, heights }: ColumnProps) => {
   useEffect(() => {
     let x: Column[] = fetchBusinesses();
     setColumnsx(x);
-    console.log(x);
   }, [fetchBusinesses]);
 
   function funcx() {

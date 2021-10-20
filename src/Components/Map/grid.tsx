@@ -1,4 +1,6 @@
 import { SortingGrid } from "../Algorithmns/Sorting/grid";
+import { createGrid } from "./logic/grid";
+import { useEffect, useState } from "react";
 
 export type GridProps = {
   rows: number;
@@ -6,15 +8,12 @@ export type GridProps = {
 };
 
 export const Grid = ({ columns, rows }: GridProps) => {
-  const grid: number[][] = [];
+  //let [grid, setGrid] = useState<number[][]>([]);
+  let grid: number[][] = createGrid(columns, rows);
 
-  for (let column: number = 0; column < columns; column++) {
-    let temp_column = [];
-    for (let row: number = 0; row < rows; row++) {
-      temp_column.push(row);
-    }
-    grid.push(temp_column);
-  }
+  // useEffect(() => {
+  //   setGrid(createGrid(columns, rows));
+  // }, [columns, rows]);
 
-  return <SortingGrid grid={grid} height={0} heights={[]} />;
+  return <SortingGrid grid={grid} />;
 };
