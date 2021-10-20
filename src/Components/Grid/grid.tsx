@@ -18,7 +18,7 @@ export const Grid = ({ rows, columns }: GridProps) => {
 
   return (
     <div id="grid-container">
-      <Column grid={grid} />
+      <Column grid={grid} length={5} />
     </div>
   );
 };
