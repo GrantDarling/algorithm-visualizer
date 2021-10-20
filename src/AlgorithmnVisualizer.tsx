@@ -1,5 +1,6 @@
 import { Grid } from "./Components/Grid/grid";
-import { Header } from "./Components/Header/header";
+import { Header } from "./Components/Headers/header";
+import { SubHeader } from "./Components/Headers/subheader";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -16,6 +17,7 @@ export const AlgorithmnVisualizer = ({ x }: AlgorithmnVisualizerProps) => {
   return (
     <Container>
       <Header x={null} />
+      <SubHeader x={null} />
       <Grid columns={10} rows={20} />
     </Container>
   );
