@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface SortingColumnInterface {
-  length: number;
+  height: number;
 }
 
 const Column = styled.div`
@@ -9,7 +9,7 @@ const Column = styled.div`
 `;
 
 export const SortingColumnStyled = styled(Column)<SortingColumnInterface>`
-  .node:nth-last-child(-n + ${(props) => props.length}) {
+  .node:nth-last-child(-n + ${(props) => props.height}) {
     background: #f7b2c6;
   }
 `;
