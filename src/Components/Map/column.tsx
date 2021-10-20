@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
-import { Row } from "../row";
-import { SortingColumnStyled } from "../styles";
+import { Row } from "./row";
+import { SortingColumnStyled } from "./styles";
 
 type ColumnProps = {
   grid: number[][];
@@ -8,7 +8,7 @@ type ColumnProps = {
   randomizer: number[];
 };
 
-export const SortingColumn = ({ grid, randomizer }: ColumnProps) => {
+export const Column = ({ grid, randomizer }: ColumnProps) => {
   // console.log(heights);
   const [clicks, setClicks] = useState(0);
 
@@ -72,6 +72,7 @@ export const SortingColumn = ({ grid, randomizer }: ColumnProps) => {
     setColumnsx([
       { height: 2, location: [0, 1, 2] },
       { height: 2, location: [0, 1, 2] },
+
       { height: 2, location: [0, 1, 2] },
     ]);
   }

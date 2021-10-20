@@ -1,4 +1,4 @@
-import { SortingColumn } from "./sorting/sorting-column";
+import { Column } from "./column";
 import { getRandomInteger } from "../Helpers/helpers";
 
 type GridProps = {
@@ -35,7 +35,7 @@ export const Grid = ({ columns, rows, randomizer }: GridProps) => {
 
   return (
     <div id="grid-container">
-      <SortingColumn grid={grid} height={0} randomizer={randomizerx} />
+      <Column grid={grid} height={0} randomizer={randomizerx} />
     </div>
   );
 };
