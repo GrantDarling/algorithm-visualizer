@@ -6,7 +6,7 @@ const Container = styled.div`
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-rows: minmax(1px, auto) 1fr;
+  grid-template-rows: auto auto 1fr;
 `;
 type AlgorithmnVisualizerProps = {
   x: null;
@@ -17,7 +17,6 @@ export const AlgorithmnVisualizer = ({ x }: AlgorithmnVisualizerProps) => {
     <Container>
       <Header x={null} />
       <Grid columns={10} rows={20} />
-      {/* <div style={{ width: "100%" }}>Hello</div> */}
     </Container>
   );
 };
