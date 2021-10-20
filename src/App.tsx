@@ -1,9 +1,8 @@
-import React from "react";
 import "./App.css";
-import { Grid } from "./Components/Grid/grid";
+import { AlgorithmnVisualizer } from "./AlgorithmnVisualizer";
 
 function App() {
-  return <Grid columns={10} rows={20} />;
+  return <AlgorithmnVisualizer x={null} />;
 }
 
 export default App;
