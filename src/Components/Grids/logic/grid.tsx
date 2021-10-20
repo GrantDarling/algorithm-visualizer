@@ -16,14 +16,16 @@ export function createGrid(columns: number, rows: number): number[][] {
   return grid;
 }
 
-/* Sorting Grid Functions */
+/* Sorting Grid */
 
-export function assignColumnHeights(grid: number[][]) {
-  const columnMaxHeight = grid[0].length;
+export function assignBarHeights(grid: number[][]) {
+  const barMaxHeight = grid.length;
+  // console.log("grid", grid);
+  // console.log("grid[0]", grid[0]);
   let heights: number[] = [];
 
   for (let random: number = 0; random < grid.length; random++) {
-    const height: number = getRandomInteger(columnMaxHeight);
+    const height: number = getRandomInteger(barMaxHeight);
     heights.push(height);
   }
   return heights;

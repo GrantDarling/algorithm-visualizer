@@ -36,3 +36,20 @@ describe("createGrid: builds the correct amount of nodes", () => {
     expect(gridColumnRow).toBe(2);
   });
 });
+
+describe("assignBarHeights: creates the appropriate heights", () => {
+  test("barMaxHeight is undefined without columns and rows", () => {
+    const heights = Grid.assignBarHeights([]);
+    expect(heights[0]).toBe(undefined);
+  });
+
+  test("barMaxHeight is 1 or less with 1 columns", () => {
+    const heights = Grid.assignBarHeights([[0]]);
+    expect(heights[0]).toBeLessThanOrEqual(1);
+  });
+
+  test("barMaxHeight is 4 or less with 4 columns", () => {
+    const heights = Grid.assignBarHeights([[0], [0], [0], [0]]);
+    expect(heights[0]).toBeLessThanOrEqual(4);
+  });
+});
