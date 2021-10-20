@@ -1,20 +1,17 @@
 import styled from "styled-components";
 
-type SubHeaderProps = {
-  x: null;
-};
-
-const SubHead = styled.div<{ x: string }>`
-  background: ${(props) => props.x};
+// const SubHead = styled.div<{ x: string }>` background: ${(props) => props.x}; `
+const SubHead = styled.div`
+  background: #67f5af;
   color: white;
   height: 50px;
   width: 100%;
 `;
 
-export const SubHeader = ({ x }: SubHeaderProps) => {
+export const SubHeader = () => {
   return (
     <>
-      <SubHead x={"#67F5AF"}>SubHead</SubHead>
+      <SubHead>SubHead</SubHead>
     </>
   );
 };

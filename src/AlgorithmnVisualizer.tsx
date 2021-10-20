@@ -9,16 +9,13 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: auto auto 1fr;
 `;
-type AlgorithmnVisualizerProps = {
-  x: null;
-};
 
-export const AlgorithmnVisualizer = ({ x }: AlgorithmnVisualizerProps) => {
+export const AlgorithmnVisualizer = () => {
   return (
     <Container>
-      <Header x={null} />
-      <SubHeader x={null} />
-      <Grid columns={10} rows={20} />
+      <Header />
+      <SubHeader />
+      <Grid columns={20} rows={20} />
     </Container>
   );
 };
