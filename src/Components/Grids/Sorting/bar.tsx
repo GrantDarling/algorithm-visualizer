@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
-import { Row } from "./row";
-import { SortingColumnStyled } from "./styles";
+import { Row } from "../../Map/row";
+import { SortingColumnStyled } from "../../Map/styles";
 
 type ColumnProps = {
   grid: number[][];
@@ -8,7 +8,7 @@ type ColumnProps = {
   heights: number[];
 };
 
-export const Column = ({ grid, heights }: ColumnProps) => {
+export const Bar = ({ grid, heights }: ColumnProps) => {
   // console.log(heights);
   const [clicks, setClicks] = useState(0);
 

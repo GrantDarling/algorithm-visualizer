@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Header } from "./Headers/header";
 import { SubHeader } from "./Headers/subheader";
-import { Grid } from "./Map/grid";
+import { Grid } from "./Grids/grid";
 
 const Visualizer = styled.div`
   height: 100vh;

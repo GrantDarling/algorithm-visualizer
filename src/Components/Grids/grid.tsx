@@ -1,4 +1,4 @@
-import { SortingGrid } from "../Algorithmns/Sorting/grid";
+import { SortingGrid } from "./Sorting/grid";
 import { createGrid } from "./logic/grid";
 
 export type GridProps = {
