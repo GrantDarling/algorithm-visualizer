@@ -5,10 +5,10 @@ import { SortingColumnStyled } from "./styles";
 type ColumnProps = {
   grid: number[][];
   height: number;
-  randomizer: number[];
+  heights: number[];
 };
 
-export const Column = ({ grid, randomizer }: ColumnProps) => {
+export const Column = ({ grid, heights }: ColumnProps) => {
   // console.log(heights);
   const [clicks, setClicks] = useState(0);
 
@@ -52,7 +52,7 @@ export const Column = ({ grid, randomizer }: ColumnProps) => {
     grid.map((col) => {
       y++;
       let temp_column: Column = {
-        height: randomizer[y],
+        height: heights[y],
         location: col,
       };
 
@@ -60,7 +60,7 @@ export const Column = ({ grid, randomizer }: ColumnProps) => {
     });
 
     return z;
-  }, [grid, randomizer, y]);
+  }, [grid, heights, y]);
 
   useEffect(() => {
     let x: Column[] = fetchBusinesses();

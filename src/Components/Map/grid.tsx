@@ -1,13 +1,13 @@
-import { Column } from "./column";
 import { getRandomInteger } from "../Helpers/helpers";
+import { SortingGrid } from "../Algorithmns/Sorting/grid";
 
-type GridProps = {
+export type GridProps = {
   rows: number;
   columns: number;
-  randomizer: number[];
+  heights?: number[];
 };
 
-export const Grid = ({ columns, rows, randomizer }: GridProps) => {
+export const Grid = ({ columns, rows }: GridProps) => {
   const grid: number[][] = [];
 
   for (let column: number = 0; column < columns; column++) {
@@ -19,23 +19,18 @@ export const Grid = ({ columns, rows, randomizer }: GridProps) => {
   }
 
   const columnMaxHeight = grid[0].length;
-  let randomizerx: number[] = [];
+  let heights: number[] = [];
 
-  function rand() {
-    randomizerx = [];
+  function randomHeights() {
+    heights = [];
     for (let random: number = 0; random < grid.length; random++) {
-      const x: number = getRandomInteger(columnMaxHeight);
-      randomizerx.push(x);
+      const height: number = getRandomInteger(columnMaxHeight);
+      heights.push(height);
     }
-    console.log(randomizerx);
-    return randomizerx;
+    return heights;
   }
 
-  rand();
+  randomHeights();
 
-  return (
-    <div id="grid-container">
-      <Column grid={grid} height={0} randomizer={randomizerx} />
-    </div>
-  );
+  return <SortingGrid grid={grid} height={0} heights={heights} />;
 };
