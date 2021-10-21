@@ -12,4 +12,8 @@ export const SortingColumnStyled = styled(Column)<SortingColumnInterface>`
   .node:nth-last-child(-n + ${(props) => props.height}) {
     background: #f7b2c6;
   }
+
+  &.active .node:nth-last-child(-n + ${(props) => props.height}) {
+    background: #f5bc4e;
+  }
 `;

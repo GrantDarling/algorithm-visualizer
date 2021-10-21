@@ -14,53 +14,80 @@ export const Bar = ({ grid, heights }: BarProps) => {
   interface Bar {
     height: number;
     location: number[];
+    active: boolean;
   }
 
   let [myInterval, setMyInterval] = useState<boolean>(false);
   let [bars, setBars] = useState<Bar[]>([]);
 
   useEffect(() => {
-    setBars(buildBars(grid, heights));
+    setBars(buildBars(grid, heights, [0, 1]));
   }, [grid, heights]);
 
   function reBuildBars() {
-    setBars([{ height: 2, location: [0, 1, 2] }]);
+    setBars([{ height: 2, location: [0, 1, 2], active: true }]);
   }
 
   let render: number = 0;
+  let outerLoop: number = 0;
+  let endOfSort: number = heights.length;
+  let nextRender: number = 0;
+
+  function x(renderingNum: number) {
+    console.log("mynum", renderingNum);
+    console.log("myheight", heights.length);
+
+    if (renderingNum < heights.length) {
+      for (let i = renderingNum - 1; i <= renderingNum; i++) {
+        setBars(buildBars(grid, heights, [i, i - 1]));
+      }
+    }
+  }
 
   // 1. create tests so that bubble sort always works
   // 2. make rows so that it is always lowest to highest(no doubles looks better)
   function bubbleSort() {
     render++;
 
-    if (render < heights.length) {
-      for (let i = 0; i <= render; i++) {
-        for (let j = 0; j <= heights.length - 1; j++) {
-          if (heights[j] > heights[j + 1]) {
-            [heights[j], heights[j + 1]] = [heights[j + 1], heights[j]];
-            setBars(buildBars(grid, heights));
-          }
+    if (render >= endOfSort) {
+      outerLoop++;
+      endOfSort--;
+      render = 1;
+    }
+
+    if (outerLoop < heights.length) {
+      for (let i = render - 1; i <= render; i++) {
+        // let k: number = i + 1;
+
+        setBars(buildBars(grid, heights, [i, i - 1]));
+
+        if (heights[i] > heights[i + 1]) {
+          [heights[i], heights[i + 1]] = [heights[i + 1], heights[i]];
         }
       }
-    } else {
-      setMyInterval(true);
+    } else if (outerLoop >= heights.length) {
+      nextRender++;
+      if (nextRender < heights.length) {
+        x(nextRender);
+      } else {
+        setBars(buildBars(grid, heights, [-1, 0]));
+        setMyInterval(true);
+      }
     }
 
     return heights;
   }
-  useEffect(() => {}, []);
 
   useEffect(() => {
     let timerId: any;
     if (myInterval === false) {
       timerId = setInterval(() => {
-        console.log("Interval triggered");
         bubbleSort();
-      }, 600);
+      }, 10);
     }
 
     return () => {
+      console.log("complete");
       clearInterval(timerId);
     };
   }, [myInterval]);
@@ -71,7 +98,7 @@ export const Bar = ({ grid, heights }: BarProps) => {
         return (
           <SortingColumnStyled
             key={idx}
-            className="column"
+            className={props.active ? "active column" : "column"}
             height={props.height}
             data-height={props.height}
           >
