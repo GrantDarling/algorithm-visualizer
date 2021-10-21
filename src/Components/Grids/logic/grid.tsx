@@ -19,7 +19,7 @@ export function createGrid(columns: number, rows: number): number[][] {
 /* Sorting Grid */
 
 export function assignBarHeights(grid: number[][]) {
-  const barMaxHeight = grid.length;
+  const barMaxHeight = grid[0].length;
   let heights: number[] = [];
 
   for (let random: number = 0; random < grid.length; random++) {
