@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { Row } from "../../Map/row";
 import { SortingColumnStyled } from "../../Map/styles";
+import { buildBars } from "../logic/grid";
 
 type BarProps = {
   grid: number[][];
@@ -16,32 +17,12 @@ export const Bar = ({ grid, heights }: BarProps) => {
 
   let [bars, setBars] = useState<Bar[]>([]);
 
-  const buildBars = useCallback(() => {
-    let bars: Bar[] = [];
-
-    grid.map((col, idx) => {
-      let temp_bar: Bar = {
-        height: heights[idx],
-        location: col,
-      };
-
-      return bars.push(temp_bar);
-    });
-
-    return bars;
-  }, [grid, heights]);
-
   useEffect(() => {
-    setBars(buildBars());
-  }, [buildBars]);
+    setBars(buildBars(grid, heights));
+  }, []);
 
-  function funcx() {
-    setBars([
-      { height: 2, location: [0, 1, 2] },
-      { height: 2, location: [0, 1, 2] },
-
-      { height: 2, location: [0, 1, 2] },
-    ]);
+  function reBuildBars() {
+    setBars([{ height: 2, location: [0, 1, 2] }]);
   }
 
   return (
@@ -54,7 +35,7 @@ export const Bar = ({ grid, heights }: BarProps) => {
             height={props.height}
             data-height={props.height}
           >
-            <button onClick={() => funcx()}></button>
+            <button onClick={() => reBuildBars()}></button>
             <Row row={props.location} />
           </SortingColumnStyled>
         );

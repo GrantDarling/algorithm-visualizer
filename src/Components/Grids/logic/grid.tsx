@@ -20,8 +20,6 @@ export function createGrid(columns: number, rows: number): number[][] {
 
 export function assignBarHeights(grid: number[][]) {
   const barMaxHeight = grid.length;
-  // console.log("grid", grid);
-  // console.log("grid[0]", grid[0]);
   let heights: number[] = [];
 
   for (let random: number = 0; random < grid.length; random++) {
@@ -29,4 +27,24 @@ export function assignBarHeights(grid: number[][]) {
     heights.push(height);
   }
   return heights;
+}
+
+export function buildBars(grid: number[][], heights: number[]) {
+  interface Bar {
+    height: number;
+    location: number[];
+  }
+
+  let bars: Bar[] = [];
+
+  grid.map((col, idx) => {
+    let temp_bar: Bar = {
+      height: heights[idx],
+      location: col,
+    };
+
+    return bars.push(temp_bar);
+  });
+
+  return bars;
 }
