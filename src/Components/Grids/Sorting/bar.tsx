@@ -7,7 +7,6 @@ type BarProps = {
   grid: number[][];
   height: number;
   heights: number[];
-  // active: boolean;
 };
 
 export const Bar = ({ grid, heights }: BarProps) => {
@@ -46,52 +45,70 @@ export const Bar = ({ grid, heights }: BarProps) => {
 
   // 1. create tests so that bubble sort always works
   // 2. make rows so that it is always lowest to highest(no doubles looks better)
-  function bubbleSort() {
-    render++;
 
-    if (render >= endOfSort) {
-      outerLoop++;
-      endOfSort--;
-      render = 1;
-    }
+  // useEffect(() => {
+  //   let timerId: any;
+  //   if (myInterval === false) {
+  //     timerId = setInterval(() => {
+  //       bubbleSort();
+  //     }, 50);
+  //   }
 
-    if (outerLoop < heights.length) {
-      for (let i = render - 1; i <= render; i++) {
-        // let k: number = i + 1;
-
-        setBars(buildBars(grid, heights, [i, i - 1]));
-
-        if (heights[i] > heights[i + 1]) {
-          [heights[i], heights[i + 1]] = [heights[i + 1], heights[i]];
-        }
-      }
-    } else if (outerLoop >= heights.length) {
-      nextRender++;
-      if (nextRender < heights.length) {
-        x(nextRender);
-      } else {
-        setBars(buildBars(grid, heights, [-1, 0]));
-        setMyInterval(true);
-      }
-    }
-
-    return heights;
-  }
+  //   return () => {
+  //     console.log("complete");
+  //     clearInterval(timerId);
+  //   };
+  // }, [myInterval]);
 
   useEffect(() => {
+    function bubbleSort() {
+      render++;
+
+      if (render >= endOfSort) {
+        outerLoop++;
+        endOfSort--;
+        render = 1;
+      }
+
+      if (outerLoop < heights.length) {
+        for (let i = render - 1; i <= render; i++) {
+          // let k: number = i + 1;
+
+          setBars(buildBars(grid, heights, [i, i - 1]));
+
+          if (heights[i] > heights[i + 1]) {
+            [heights[i], heights[i + 1]] = [heights[i + 1], heights[i]];
+          }
+        }
+      } else if (outerLoop >= heights.length) {
+        nextRender++;
+        if (nextRender < heights.length) {
+          x(nextRender);
+        } else {
+          setBars(buildBars(grid, heights, [-1, 0]));
+          setMyInterval(true);
+        }
+      }
+
+      return heights;
+    }
+
     let timerId: any;
+
     if (myInterval === false) {
-      timerId = setInterval(() => {
+      const f = () => {
         bubbleSort();
-      }, 10);
+        timerId = requestAnimationFrame(f);
+      };
+
+      timerId = requestAnimationFrame(f);
     }
 
     return () => {
-      console.log("complete");
-      clearInterval(timerId);
+      cancelAnimationFrame(timerId);
+      console.log("canceled!");
     };
   }, [myInterval]);
-
   return (
     <>
       {bars.map((props: Bar, idx) => {

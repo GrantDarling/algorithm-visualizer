@@ -78,7 +78,6 @@ export function buildBars(
   let bars: Bar[] = [];
 
   grid.map((col, idx) => {
-    //.log(col, idx);
     let temp_bar: Bar = {
       height: heights[idx],
       location: col,
