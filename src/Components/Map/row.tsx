@@ -5,7 +5,7 @@ type RowProps = {
 export const Row = ({ row }: RowProps) => {
   return (
     <>
-      {row.map((node, idx) => {
+      {row.map((_, idx) => {
         return <div key={idx} className="node"></div>;
       })}
     </>

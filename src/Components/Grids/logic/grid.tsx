@@ -1,4 +1,4 @@
-import {} from "../../Helpers/helpers";
+import { shuffle } from "../../Helpers/helpers";
 
 export function createGrid(columns: number, rows: number): number[][] {
   let grid: number[][] = [];
@@ -18,39 +18,7 @@ export function createGrid(columns: number, rows: number): number[][] {
 
 /* Sorting Grid */
 
-// export function assignBarHeights(grid: number[][]) {
-//   const barMaxHeight = grid[0].length;
-//   let heights: number[] = [];
-
-//   for (let random: number = 0; random < grid.length; random++) {
-//     const height: number = getRandomInteger(barMaxHeight);
-//     heights.push(height);
-//   }
-//   return heights;
-// }
-
-function shuffle(array: number[]) {
-  let currentIndex = array.length,
-    randomIndex;
-
-  // While there remain elements to shuffle...
-  while (currentIndex !== 0) {
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
-  }
-
-  return array;
-}
-
 export function assignBarHeights(grid: number[][]) {
-  // const barMaxHeight = grid[0].length;
   let heights: number[] = [];
   let counter: number = 0;
 
