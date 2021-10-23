@@ -1,5 +1,5 @@
 import { Row } from "./row";
-import { Column } from "../../Styles/styles";
+import { Column, Button } from "../../Styles/styles";
 import { useEffect, useState } from "react";
 import { buildBars } from "./grid-logic";
 import { bubbleSortInit } from "../Algorithms/Sorting/BubbleSort/bubbleSortInit";
@@ -92,7 +92,7 @@ export const Bar = ({ grid, heights }: BarProps) => {
             height={props.height}
             color={props.color}
           >
-            <button
+            <Button
               onClick={() => {
                 restart();
               }}

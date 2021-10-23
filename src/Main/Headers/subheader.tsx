@@ -1,5 +1,9 @@
-import { SubHead } from "../../Styles/styles";
+import { SubHead, VisualizeButton } from "../../Styles/styles";
 
 export const SubHeader = () => {
-  return <SubHead>SubHead</SubHead>;
+  return (
+    <SubHead>
+      <VisualizeButton>visualize</VisualizeButton>
+    </SubHead>
+  );
 };
