@@ -1,7 +1,7 @@
-import { Visualizer } from "../Styles/styles";
-import { Header } from "./Headers/header";
-import { SubHeader } from "./Headers/subheader";
-import { Grid } from "./Grid/grid";
+import { Visualizer } from "../styles/styles";
+import { Header } from "./headers/header";
+import { SubHeader } from "./headers/subheader";
+import { Grid } from "./grid/grid";
 
 export const AlgorithmnVisualizer = () => {
   return (

@@ -1,5 +1,5 @@
-import { shuffle } from "../../Helpers/helpers";
-import { generateColor } from "../../Helpers/helpers";
+import { shuffle } from "../../helpers/helpers";
+import { generateColor } from "../../helpers/helpers";
 
 export function createGrid(columns: number, rows: number): number[][] {
   let grid: number[][] = [];

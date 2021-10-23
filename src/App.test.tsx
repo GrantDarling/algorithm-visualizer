@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { Grid } from "./Main/Grid/grid";
+import { Grid } from "./main/grid/grid";
 
 describe("renders proper amount of nodes", () => {
   test("(1x3) rows & columns equals 3", () => {
