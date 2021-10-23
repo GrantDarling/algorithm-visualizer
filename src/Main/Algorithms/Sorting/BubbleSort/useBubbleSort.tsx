@@ -1,32 +1,17 @@
 import { useEffect, useState } from "react";
-import { buildBars } from "../logic/grid";
-import * as sortAlgo from "../../Algorithmns/algorithms-sorting";
-
-interface BarState {
-  height: number;
-  location: number[];
-  active: boolean;
-}
+import { buildBars } from "../../../Grid/grid-logic";
+import { bubbleSortInit } from "./bubbleSortInit";
+import { highlightBarsInit, highlightBars } from "../../General/inits";
+import { BarState } from "../../../Grid/bar";
 
 export const useBubbleSort = (grid: number[][], heights: number[]) => {
   let [myInterval, setMyInterval] = useState<boolean>(false);
   let [bars, setBars] = useState<BarState[]>([]);
 
   useEffect(() => {
-    setBars(buildBars(grid, heights, [1, 1]));
-  }, [grid, heights]);
-
-  const highlightBars = (nextBar: number) => {
-    let thisBar: number = nextBar - 1;
-    if (nextBar < heights.length) {
-      setBars(buildBars(grid, heights, [thisBar, nextBar]));
-    }
-  };
-
-  useEffect(() => {
+    let nextBar: number = highlightBarsInit();
     let { outerLoop, innerLoopCurrent, innerLoopMax, finished } =
-      sortAlgo.bubbleSortInit(heights);
-    let nextBar: number = sortAlgo.highlightBarsInit();
+      bubbleSortInit(heights);
 
     const bubbleSort = () => {
       innerLoopCurrent++;
@@ -52,7 +37,7 @@ export const useBubbleSort = (grid: number[][], heights: number[]) => {
       if (finished) {
         nextBar++;
         if (nextBar < heights.length) {
-          highlightBars(nextBar);
+          setBars(highlightBars(nextBar, grid, heights));
         } else {
           setBars(buildBars(grid, heights, [0, 0]));
           setMyInterval(true);
@@ -74,7 +59,7 @@ export const useBubbleSort = (grid: number[][], heights: number[]) => {
     }
 
     return () => cancelAnimationFrame(animateID);
-  }, [myInterval]);
+  }, [myInterval, grid, heights]);
 
   return bars;
 };

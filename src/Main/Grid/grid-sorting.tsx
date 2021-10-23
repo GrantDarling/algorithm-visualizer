@@ -1,5 +1,5 @@
 import { Bar } from "./bar";
-import { assignBarHeights } from "../logic/grid";
+import { assignBarHeights } from "./grid-logic";
 
 type SortingGridProps = {
   grid: number[][];

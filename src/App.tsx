@@ -1,5 +1,5 @@
 import "./App.css";
-import { AlgorithmnVisualizer } from "./Components/AlgorithmnVisualizer";
+import { AlgorithmnVisualizer } from "./Main/AlgorithmnVisualizer";
 
 function App() {
   return <AlgorithmnVisualizer />;

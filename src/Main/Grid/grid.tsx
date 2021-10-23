@@ -1,5 +1,5 @@
-import { SortingGrid } from "./Sorting/grid";
-import { createGrid } from "./logic/grid";
+import { SortingGrid } from "./grid-sorting";
+import { createGrid } from "./grid-logic";
 
 export type GridProps = {
   rows: number;

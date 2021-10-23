@@ -1,4 +1,4 @@
-import * as Grid from "./grid";
+import * as Grid from "./grid-logic";
 
 describe("createGrid: builds the correct amount of nodes", () => {
   test("12x12 grid creates 144 nodes", () => {
