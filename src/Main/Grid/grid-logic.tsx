@@ -1,4 +1,5 @@
 import { shuffle } from "../../Helpers/helpers";
+import { generateColor } from "../../Helpers/helpers";
 
 export function createGrid(columns: number, rows: number): number[][] {
   let grid: number[][] = [];
@@ -32,6 +33,8 @@ export function assignBarHeights(grid: number[][]) {
   return heights;
 }
 
+let colors: any[] = [];
+
 export function buildBars(
   grid: number[][],
   heights: number[],
@@ -40,7 +43,16 @@ export function buildBars(
   interface Bar {
     height: number;
     location: number[];
+    color: string;
     active: boolean;
+  }
+
+  if (colors.length === 0) {
+    const colorStart = "#ff3825";
+    const colorEnd = "#f4e57c";
+    const colorsLen = heights.length + 1;
+
+    colors = generateColor(colorStart, colorEnd, colorsLen);
   }
 
   let bars: Bar[] = [];
@@ -49,6 +61,7 @@ export function buildBars(
     let temp_bar: Bar = {
       height: heights[idx],
       location: col,
+      color: colors[heights[idx]],
       active:
         heights[idx] === heights[active[0]] ||
         heights[idx] === heights[active[1]]

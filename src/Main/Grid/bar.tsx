@@ -13,6 +13,7 @@ type BarProps = {
 interface BarState {
   height: number;
   location: number[];
+  color: string;
   active: boolean;
 }
 
@@ -89,6 +90,7 @@ export const Bar = ({ grid, heights }: BarProps) => {
             key={idx}
             className={props.active ? "active column" : "column"}
             height={props.height}
+            color={props.color}
           >
             <button
               onClick={() => {

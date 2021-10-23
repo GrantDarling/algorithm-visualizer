@@ -6,19 +6,19 @@ body,
   height: 100%;
 }
 
+button {
+  background-color: black;
+}
+
 #grid-container {
   display: grid;
-  background: #efdff7;
+  background: #49523f52;
   color: white;
   grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
 }
 
 #grid-container > .column {
   display: grid;
-}
-
-#grid-container > .column > .node {
-  border: solid 1px #a26d02;
 }
 
 /* Switch to styled components! */

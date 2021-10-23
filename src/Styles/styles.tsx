@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-const colors = {};
-
 export const Visualizer = styled.div`
   height: 100vh;
   width: 100vw;
