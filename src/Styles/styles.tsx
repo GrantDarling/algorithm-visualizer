@@ -150,8 +150,9 @@ export const Column = styled.div<SortingColumnInterface>`
   &.active {
     background: black;
   }
+
   &.active .node:nth-last-child(-n + ${(props) => props.height}) {
-    background: #0d6349;
+    background: #1cdda3;
     opacity: 0.8;
     box-shadow: none;
   }

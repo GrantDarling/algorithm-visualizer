@@ -128,37 +128,53 @@ export const bubbleSort = (grid: number[][], heights: number[]) => {
   return heights;
 };
 
-// export const bubbleSort = (grid: number[][], heights: number[]) => {
-//   innerLoopCurrent++;
+/* Bubble Sort */
 
-//   if (innerLoopCurrent >= innerLoopMax) {
-//     innerLoopCurrent = 1;
-//     outerLoop++;
-//     innerLoopMax--;
-//   }
+let currentMin: any;
+let currentItem: any;
 
-//   if (outerLoop < heights.length) {
-//     let i: number = innerLoopCurrent - 1;
+const selectionSortInit = (bars: number[]) => {
+  let innerLoopCurrent: number = 0;
+  let outerLoop: number = 0;
+  currentMin = 10;
+  currentItem = 15;
+  let finished: boolean = false;
 
-//     if (heights[i] > heights[i + 1]) {
-//       let x: any = buildBars(grid, heights, [i, i - 1]);
-//       [heights[i], heights[i + 1]] = [heights[i + 1], heights[i]];
-//       return x;
-//     }
+  return { innerLoopCurrent, outerLoop, currentMin, currentItem, finished };
+};
 
-//     return buildBars(grid, heights, [i, i - 1]);
-//   } else {
-//     finished = true;
-//   }
+export const selectionSort = (grid: number[][], heights: number[]) => {
+  if (isInitialized === false) {
+    isInitialized = true;
+    nextBar = highlightBarsInit();
 
-//   if (finished) {
-//     nextBar++;
-//     if (nextBar < heights.length) {
-//       return highlightBars(nextBar, grid, heights);
-//     } else {
-//       return buildBars(grid, heights, [0, 0]);
-//     }
-//   }
+    ({ outerLoop, innerLoopCurrent, currentMin, currentItem, finished } =
+      selectionSortInit(heights));
+  }
 
-//   return heights;
-// };
+  innerLoopCurrent++;
+
+  if (innerLoopCurrent >= innerLoopMax) {
+    innerLoopCurrent = 1;
+    outerLoop++;
+    innerLoopMax--;
+  }
+
+  return buildBars(grid, heights, [currentMin, currentItem]);
+
+  // else {
+  //   finished = true;
+  // }
+
+  if (finished) {
+    nextBar++;
+    if (nextBar < heights.length) {
+      return highlightBars(nextBar, grid, heights);
+    } else {
+      return buildBars(grid, heights, [0, 0]);
+    }
+  }
+
+  console.log("never returns");
+  return heights;
+};
