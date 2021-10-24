@@ -23,8 +23,10 @@ export const Head = styled.div`
 
 export const SubHead = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
-  column-gap: 100px;
+  grid-template-columns: auto auto 140px auto auto;
+  column-gap: 40px;
+  overflow: hidden;
+
   background: #1c1c1c;
   justify-content: center;
   align-items: center;
@@ -37,7 +39,7 @@ export const SubHead = styled.div`
     rgba(42, 0, 49, 1) 100%
   );
   color: white;
-  height: 75px;
+  height: 100px;
   width: 100%;
 `;
 
@@ -45,25 +47,29 @@ export const CreateGridContainer = styled.div`
   background: black;
   display: grid;
   grid-template-columns: 1fr;
-
-  label {
-    padding: 6px;
-  }
+  padding: 16px;
 `;
 
 export const ComplexityContainer = styled.div`
   background: black;
   display: grid;
   grid-template-columns: 1fr;
-  padding: 6px;
+  padding: 16px;
+  font-size: 16px;
 `;
 
 export const AlgorithmTypeSelectorContainer = styled.div`
   background: black;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 16px;
 `;
 
 export const AlgorithmSelectorContainer = styled.div`
   background: black;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 16px;
 `;
 
 export const Button = styled.button`
@@ -76,6 +82,7 @@ export const VisualizeButton = styled(Button)`
   color: pink;
   transition: 0.25s;
   border: solid 1px red;
+  font-size: 16px;
 
   &:hover {
     border: solid 1px green;
