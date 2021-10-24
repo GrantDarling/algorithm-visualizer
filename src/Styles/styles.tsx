@@ -23,6 +23,8 @@ export const Head = styled.div`
 
 export const SubHead = styled.div`
   display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 100px;
   background: #1c1c1c;
   justify-content: center;
   align-items: center;
@@ -35,8 +37,25 @@ export const SubHead = styled.div`
     rgba(42, 0, 49, 1) 100%
   );
   color: white;
-  height: 50px;
+  height: 75px;
   width: 100%;
+`;
+
+export const CreateGridContainer = styled.div`
+  background: black;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  label {
+    padding: 6px;
+  }
+`;
+
+export const ComplexityContainer = styled.div`
+  background: black;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 6px;
 `;
 
 export const Button = styled.button`
@@ -58,7 +77,7 @@ export const VisualizeButton = styled(Button)`
   &:hover {
     animation: pulse 1s;
   }
-  &:focus {
+  &:active {
     background: gold;
   }
 
