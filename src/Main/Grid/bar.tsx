@@ -1,10 +1,10 @@
 import { Row } from "./row";
 import { Column, Button } from "../../styles/styles";
 import { useEffect, useState } from "react";
-import { buildBars } from "./grid-logic";
+import { buildBars, bubbleSort } from "./grid-logic";
 import { bubbleSortInit } from "../algorithms/Sorting/BubbleSort/bubbleSortInit";
 import { highlightBarsInit, highlightBars } from "../algorithms/general/inits";
-import { useSelector, shallowEqual } from "react-redux";
+import { useSelector } from "react-redux";
 
 type BarProps = {
   grid: number[][];
@@ -26,7 +26,7 @@ export const Bar = ({ grid, heights }: BarProps) => {
     return {
       start: state.start,
     };
-  }, shallowEqual);
+  });
 
   useEffect(() => {
     setAnimate(global.start);
@@ -37,49 +37,11 @@ export const Bar = ({ grid, heights }: BarProps) => {
   }, [grid, heights]);
 
   useEffect(() => {
-    let nextBar: number = highlightBarsInit();
-    let { outerLoop, innerLoopCurrent, innerLoopMax, finished } =
-      bubbleSortInit(heights);
-
-    const bubbleSort = () => {
-      innerLoopCurrent++;
-
-      if (innerLoopCurrent >= innerLoopMax) {
-        innerLoopCurrent = 1;
-        outerLoop++;
-        innerLoopMax--;
-      }
-
-      if (outerLoop < heights.length) {
-        let i: number = innerLoopCurrent - 1;
-
-        setBars(buildBars(grid, heights, [i, i - 1]));
-
-        if (heights[i] > heights[i + 1]) {
-          [heights[i], heights[i + 1]] = [heights[i + 1], heights[i]];
-        }
-      } else {
-        finished = true;
-      }
-
-      if (finished) {
-        nextBar++;
-        if (nextBar < heights.length) {
-          setBars(highlightBars(nextBar, grid, heights));
-        } else {
-          setBars(buildBars(grid, heights, [0, 0]));
-          setAnimate(true);
-        }
-      }
-
-      return heights;
-    };
-
     let animateID: any;
-    console.log(animate);
+
     if (animate) {
       const animate = () => {
-        bubbleSort();
+        setBars(bubbleSort(grid, heights));
         animateID = requestAnimationFrame(animate);
       };
 

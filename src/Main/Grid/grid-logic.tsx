@@ -1,6 +1,9 @@
 import { shuffle } from "../../helpers/helpers";
 import { generateColor } from "../../helpers/helpers";
 
+import { bubbleSortInit } from "../algorithms/Sorting/BubbleSort/bubbleSortInit";
+import { highlightBarsInit, highlightBars } from "../algorithms/general/inits";
+
 export function createGrid(columns: number, rows: number): number[][] {
   let grid: number[][] = [];
 
@@ -74,3 +77,88 @@ export function buildBars(
 
   return bars;
 }
+
+let isInitialized: boolean = false;
+let nextBar: number;
+let outerLoop: any;
+let innerLoopCurrent: any;
+let innerLoopMax: any;
+let finished: any;
+
+export const bubbleSort = (grid: number[][], heights: number[]) => {
+  if (isInitialized === false) {
+    isInitialized = true;
+    nextBar = highlightBarsInit();
+    ({ outerLoop, innerLoopCurrent, innerLoopMax, finished } =
+      bubbleSortInit(heights));
+  }
+
+  innerLoopCurrent++;
+
+  if (innerLoopCurrent >= innerLoopMax) {
+    innerLoopCurrent = 1;
+    outerLoop++;
+    innerLoopMax--;
+  }
+
+  if (outerLoop < heights.length) {
+    let i: number = innerLoopCurrent - 1;
+
+    if (heights[i] > heights[i + 1]) {
+      let x: any = buildBars(grid, heights, [i, i - 1]);
+      [heights[i], heights[i + 1]] = [heights[i + 1], heights[i]];
+      return x;
+    }
+
+    return buildBars(grid, heights, [i, i - 1]);
+  } else {
+    finished = true;
+  }
+
+  if (finished) {
+    nextBar++;
+    if (nextBar < heights.length) {
+      return highlightBars(nextBar, grid, heights);
+    } else {
+      return buildBars(grid, heights, [0, 0]);
+    }
+  }
+
+  console.log("never returns");
+  return heights;
+};
+
+// export const bubbleSort = (grid: number[][], heights: number[]) => {
+//   innerLoopCurrent++;
+
+//   if (innerLoopCurrent >= innerLoopMax) {
+//     innerLoopCurrent = 1;
+//     outerLoop++;
+//     innerLoopMax--;
+//   }
+
+//   if (outerLoop < heights.length) {
+//     let i: number = innerLoopCurrent - 1;
+
+//     if (heights[i] > heights[i + 1]) {
+//       let x: any = buildBars(grid, heights, [i, i - 1]);
+//       [heights[i], heights[i + 1]] = [heights[i + 1], heights[i]];
+//       return x;
+//     }
+
+//     return buildBars(grid, heights, [i, i - 1]);
+//   } else {
+//     finished = true;
+//   }
+
+//   if (finished) {
+//     nextBar++;
+//     if (nextBar < heights.length) {
+//       return highlightBars(nextBar, grid, heights);
+//     } else {
+//       return buildBars(grid, heights, [0, 0]);
+//     }
+//   }
+
+//   return heights;
+// };
