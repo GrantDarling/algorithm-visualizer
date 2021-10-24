@@ -4,6 +4,8 @@ import { Dispatch } from "redux";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateGrid } from "./create-grid";
 import { Complexity } from "./complexity";
+import { AlgorithmTypeSelector } from "./algorithm-type-selector";
+import { AlgorithmSelector } from "./algorithm-selector";
 
 export const SubHeader = () => {
   const start: IGlobal = useSelector((state: GlobalState) => {
@@ -16,10 +18,12 @@ export const SubHeader = () => {
 
   return (
     <SubHead>
-      <CreateGrid />
+      <AlgorithmTypeSelector />
+      <AlgorithmSelector />
       <VisualizeButton onClick={() => dispatch(toggleStart(start))}>
         visualize
       </VisualizeButton>
+      <CreateGrid />
       <Complexity />
     </SubHead>
   );

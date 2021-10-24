@@ -23,7 +23,7 @@ export const Head = styled.div`
 
 export const SubHead = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto auto auto;
   column-gap: 100px;
   background: #1c1c1c;
   justify-content: center;
@@ -56,6 +56,14 @@ export const ComplexityContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   padding: 6px;
+`;
+
+export const AlgorithmTypeSelectorContainer = styled.div`
+  background: black;
+`;
+
+export const AlgorithmSelectorContainer = styled.div`
+  background: black;
 `;
 
 export const Button = styled.button`
