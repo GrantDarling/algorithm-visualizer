@@ -160,6 +160,27 @@ export const selectionSort = (grid: number[][], heights: number[]) => {
     innerLoopMax--;
   }
 
+  if (outerLoop < heights.length) {
+    let i: number = innerLoopCurrent - 1;
+    let currentMin = heights[outerLoop];
+
+    for (let j = i; j < heights.length; j++) {
+      let currentItem = heights[j];
+
+      if (currentItem < currentMin) {
+        let x: any = buildBars(grid, heights, [currentMin, j]);
+        currentMin = currentItem;
+        [heights[outerLoop], heights[j]] = [heights[j], heights[outerLoop]];
+        return x;
+      }
+      return buildBars(grid, heights, [currentMin, j]);
+    }
+  }
+
+  // for (let i = 0; i < heights.length; i++) {
+  //   let currentMin = heights[i];
+  // }
+
   return buildBars(grid, heights, [currentMin, currentItem]);
 
   // else {
