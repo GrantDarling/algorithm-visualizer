@@ -78,6 +78,10 @@ export function buildBars(
   return bars;
 }
 
+export const isFinished = () => {
+  return true;
+};
+
 let isInitialized: boolean = false;
 let nextBar: number;
 let outerLoop: any;
@@ -120,6 +124,8 @@ export const bubbleSort = (grid: number[][], heights: number[]) => {
     if (nextBar < heights.length) {
       return highlightBars(nextBar, grid, heights);
     } else {
+      console.log("trapped af");
+      return false;
       return buildBars(grid, heights, [0, 0]);
     }
   }
@@ -132,15 +138,23 @@ export const bubbleSort = (grid: number[][], heights: number[]) => {
 
 let currentMin: any;
 let currentItem: any;
+let innerLoopNext: number = 0;
 
 const selectionSortInit = (bars: number[]) => {
   let innerLoopCurrent: number = 0;
   let outerLoop: number = 0;
-  currentMin = 10;
-  currentItem = 15;
+  let currentMin: number = bars[0];
   let finished: boolean = false;
+  //let innerLoopNext: number = 0;
 
-  return { innerLoopCurrent, outerLoop, currentMin, currentItem, finished };
+  return {
+    innerLoopCurrent,
+    outerLoop,
+    currentMin,
+    currentItem,
+    finished,
+    //innerLoopNext,
+  };
 };
 
 export const selectionSort = (grid: number[][], heights: number[]) => {
@@ -153,47 +167,45 @@ export const selectionSort = (grid: number[][], heights: number[]) => {
   }
 
   innerLoopCurrent++;
+  if (innerLoopCurrent >= heights.length && outerLoop < heights.length) {
+    console.log(outerLoop);
+    [heights[heights.indexOf(currentMin)], heights[outerLoop]] = [
+      heights[outerLoop],
+      heights[heights.indexOf(currentMin)],
+    ];
 
-  if (innerLoopCurrent >= innerLoopMax) {
-    innerLoopCurrent = 1;
+    innerLoopNext++;
+    console.log(innerLoopNext);
+    innerLoopCurrent = innerLoopNext;
+    currentMin = heights[innerLoopNext];
     outerLoop++;
-    innerLoopMax--;
+
+    return buildBars(grid, heights, [innerLoopCurrent, currentItem]);
   }
 
-  if (outerLoop < heights.length) {
-    let i: number = innerLoopCurrent - 1;
-    let currentMin = heights[outerLoop];
-
-    for (let j = i; j < heights.length; j++) {
-      let currentItem = heights[j];
-
-      if (currentItem < currentMin) {
-        let x: any = buildBars(grid, heights, [currentMin, j]);
-        currentMin = currentItem;
-        [heights[outerLoop], heights[j]] = [heights[j], heights[outerLoop]];
-        return x;
-      }
-      return buildBars(grid, heights, [currentMin, j]);
-    }
-  }
-
-  // for (let i = 0; i < heights.length; i++) {
-  //   let currentMin = heights[i];
-  // }
-
-  return buildBars(grid, heights, [currentMin, currentItem]);
-
-  // else {
-  //   finished = true;
-  // }
-
-  if (finished) {
+  console.log("heights", heights.length, "outerLoop: ", outerLoop);
+  if (outerLoop >= heights.length) {
     nextBar++;
     if (nextBar < heights.length) {
       return highlightBars(nextBar, grid, heights);
     } else {
+      console.log("trapped af");
+      heights = [];
       return buildBars(grid, heights, [0, 0]);
     }
+  }
+
+  if (innerLoopCurrent < heights.length) {
+    let currentItem = innerLoopCurrent;
+    let minIdx: any = heights.indexOf(currentMin);
+
+    console.log("min: ", currentMin, "curr: ", heights[currentItem]);
+    if (heights[currentItem] < currentMin) {
+      currentMin = heights[currentItem];
+      let x: any = buildBars(grid, heights, [minIdx, currentItem]);
+      return x;
+    }
+    return buildBars(grid, heights, [minIdx, currentItem]);
   }
 
   console.log("never returns");
