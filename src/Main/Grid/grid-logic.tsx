@@ -125,13 +125,13 @@ export const bubbleSort = (grid: number[][], heights: number[]) => {
       return highlightBars(nextBar, grid, heights);
     } else {
       console.log("trapped af");
-      return false;
-      return buildBars(grid, heights, [0, 0]);
+      //return false;
+      buildBars(grid, heights, [0, 0]);
     }
   }
 
   console.log("never returns");
-  return heights;
+  buildBars(grid, heights, [0, 0]);
 };
 
 /* Bubble Sort */
@@ -190,12 +190,12 @@ export const selectionSort = (grid: number[][], heights: number[]) => {
       return highlightBars(nextBar, grid, heights);
     } else {
       console.log("trapped af");
-      heights = [];
-      return buildBars(grid, heights, [0, 0]);
+      //return false;
+      // return buildBars(grid, heights, [0, 0]);
     }
   }
 
-  if (innerLoopCurrent < heights.length) {
+  if (innerLoopCurrent < heights.length && outerLoop < heights.length) {
     let currentItem = innerLoopCurrent;
     let minIdx: any = heights.indexOf(currentMin);
 
@@ -209,5 +209,5 @@ export const selectionSort = (grid: number[][], heights: number[]) => {
   }
 
   console.log("never returns");
-  return heights;
+  // return heights;
 };

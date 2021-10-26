@@ -40,16 +40,20 @@ export const Bar = ({ grid, heights }: BarProps) => {
     let animateID: any;
     if (animate) {
       const animate = () => {
-        if (bubbleSort(grid, heights)) {
-          setBars(bubbleSort(grid, heights));
+        // console.log(bubbleSort(grid, heights));
+        // let yy: any = bubbleSort(grid, heights);
+        let yy: any = selectionSort(grid, heights);
+        if (yy !== undefined) {
+          setBars(yy);
           animateID = requestAnimationFrame(animate);
         }
+
+        // setBars(selectionSort(grid, heights));
       };
+
       animateID = requestAnimationFrame(animate);
-    } else {
-      cancelAnimationFrame(animateID);
     }
-    // setBars(selectionSort(grid, heights));
+    return () => cancelAnimationFrame(animateID);
   }, [animate, grid, heights]);
 
   return (

@@ -90,7 +90,7 @@ export const VisualizeButton = styled(Button)`
   }
 
   &:hover {
-    animation: pulse 1s;
+    animation: pulse 0.5s;
   }
   &:active {
     background: gold;
