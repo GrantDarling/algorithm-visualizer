@@ -11,12 +11,12 @@ export const CreateGrid = () => {
   const gridSize: IGlobal = useSelector((state: GlobalState) => {
     return {
       ...state,
-      gridSize: value || 10,
+      gridSize: value,
     };
   });
 
   useEffect(() => {
-    console.log(value);
+    console.log("value");
     dispatch(setGridSize(gridSize));
   }, [value]);
 
