@@ -10,6 +10,7 @@ import { AlgorithmSelector } from "./algorithm-selector";
 export const SubHeader = () => {
   const start: IGlobal = useSelector((state: GlobalState) => {
     return {
+      ...state,
       start: !state.start,
     };
   });

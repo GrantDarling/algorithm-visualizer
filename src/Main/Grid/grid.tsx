@@ -1,12 +1,17 @@
 import { SortingGrid } from "./grid-sorting";
 import { createGrid } from "./grid-logic";
 
-export type GridProps = {
-  rows: number;
-  columns: number;
-};
+// redux
+import { useSelector } from "react-redux";
 
-export const Grid = ({ columns, rows }: GridProps) => {
-  let grid: number[][] = createGrid(columns, rows);
+export const Grid = () => {
+  const global: IGlobal = useSelector((state: GlobalState) => {
+    return {
+      ...state,
+      gridSize: state.gridSize,
+    };
+  });
+
+  let grid: number[][] = createGrid(global.gridSize, global.gridSize);
   return <SortingGrid grid={grid} />;
 };

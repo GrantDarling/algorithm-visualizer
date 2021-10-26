@@ -32,6 +32,14 @@ export function toggleStart(global: IGlobal) {
   return dispatchGlobal(action);
 }
 
+export function setGridSize(global: IGlobal) {
+  const action: GlobalAction = {
+    type: actionTypes.GRID_SIZE,
+    global,
+  };
+  return dispatchGlobal(action);
+}
+
 export function dispatchGlobal(action: GlobalAction) {
   return (dispatch: DispatchGlobalType) => {
     dispatch(action);

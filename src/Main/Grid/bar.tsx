@@ -22,6 +22,7 @@ export const Bar = ({ grid, heights }: BarProps) => {
 
   const global: IGlobal = useSelector((state: GlobalState) => {
     return {
+      ...state,
       start: state.start,
     };
   });

@@ -1,9 +1,11 @@
 interface IGlobal {
   start: boolean;
+  gridSize: number;
 }
 
 declare type GlobalState = {
   start: boolean;
+  gridSize: number;
 };
 
 declare type GlobalAction = {

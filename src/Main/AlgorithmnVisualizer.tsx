@@ -8,7 +8,7 @@ export const AlgorithmnVisualizer = () => {
     <Visualizer>
       <Header />
       <SubHeader />
-      <Grid columns={30} rows={30} />
+      <Grid />
     </Visualizer>
   );
 };
