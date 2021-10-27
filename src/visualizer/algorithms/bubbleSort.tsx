@@ -1,5 +1,5 @@
-import { highlightBarsInit, highlightBars } from "../highlightBars";
-import { buildBars } from "../../grid/grid-logic";
+import { highlightBarsInit, highlightBars } from "./highlightBars";
+import { buildBars } from "../grid/grid-logic";
 
 export const bubbleSortInit = (bars: number[]) => {
   let currentInnerLoop: number = 0;

@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Row } from "./row";
 import { Column, Button } from "../../styles/styles";
 import { assignBarHeights } from "./grid-logic";
 
 import { useSelector } from "react-redux";
-import { bubbleSort } from "../algorithms/Sorting/bubbleSort";
+import { bubbleSort } from "../algorithms/bubbleSort";
 
 interface BarState {
   height: number;
@@ -63,7 +62,9 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
             color={props.color}
           >
             <Button />
-            <Row row={props.location} />
+            {props.location.map((_, idx) => (
+              <div key={idx} className="node"></div>
+            ))}
           </Column>
         );
       })}

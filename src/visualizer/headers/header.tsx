@@ -7,7 +7,9 @@ import { Complexity } from "./complexity";
 import { AlgorithmTypeSelector } from "./algorithm-type-selector";
 import { AlgorithmSelector } from "./algorithm-selector";
 
-export const SubHeader = () => {
+import { Head } from "../../styles/styles";
+
+export const Header = () => {
   const start: IGlobal = useSelector((state: GlobalState) => {
     return {
       ...state,
@@ -18,14 +20,17 @@ export const SubHeader = () => {
   const dispatch: Dispatch<any> = useDispatch();
 
   return (
-    <SubHead>
-      <AlgorithmTypeSelector />
-      <AlgorithmSelector />
-      <VisualizeButton onClick={() => dispatch(toggleStart(start))}>
-        visualize
-      </VisualizeButton>
-      <CreateGrid />
-      <Complexity />
-    </SubHead>
+    <>
+      <Head>Algorithm Visualizer</Head>
+      <SubHead>
+        <AlgorithmTypeSelector />
+        <AlgorithmSelector />
+        <VisualizeButton onClick={() => dispatch(toggleStart(start))}>
+          visualize
+        </VisualizeButton>
+        <CreateGrid />
+        <Complexity />
+      </SubHead>
+    </>
   );
 };

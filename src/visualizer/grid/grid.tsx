@@ -1,4 +1,4 @@
-import { SortingGrid } from "./grid-sorting";
+import { SortingGrid } from "./sorting-grid";
 import { createGrid } from "./grid-logic";
 
 // redux

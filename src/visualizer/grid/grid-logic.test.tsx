@@ -1,5 +1,22 @@
 import * as Grid from "./grid-logic";
 
+describe("createGrid Tests:", () => {
+  test("1 column x 3 rows", () => {
+    const grid = Grid.createGrid(1, 3);
+    expect(grid).toEqual(expect.arrayContaining([[0, 1, 2]]));
+  });
+
+  test("3 column x 1 rows", () => {
+    const grid = Grid.createGrid(3, 1);
+    expect(grid).toEqual(expect.arrayContaining([[0], [0], [0]]));
+  });
+
+  test("-1 column x -1 rows", () => {
+    const grid = Grid.createGrid(-1, -1);
+    expect(grid).toEqual(expect.arrayContaining([[0]]));
+  });
+});
+
 describe("createGrid: builds the correct amount of nodes", () => {
   test("12x12 grid creates 144 nodes", () => {
     const grid = Grid.createGrid(12, 12);

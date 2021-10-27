@@ -1,5 +1,5 @@
 import "./App.css";
-import { AlgorithmnVisualizer } from "./main/AlgorithmnVisualizer";
+import { AlgorithmnVisualizer } from "./visualizer/AlgorithmnVisualizer";
 
 const App = () => {
   return <AlgorithmnVisualizer />;

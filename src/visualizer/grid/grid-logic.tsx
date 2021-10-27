@@ -17,6 +17,9 @@ export function createGrid(columns: number, rows: number): number[][] {
     }
     grid.push(temp_column);
   }
+
+  console.log(grid, "is grid");
+  console.log(grid[0], "is grid");
   return grid;
 }
 
