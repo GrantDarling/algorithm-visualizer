@@ -1,7 +1,7 @@
 import { Row } from "./row";
 import { Column, Button } from "../../styles/styles";
 import { useEffect, useState } from "react";
-import { buildBars, bubbleSort, selectionSort, isFinished } from "./grid-logic";
+import { buildBars, selectionSort } from "./grid-logic";
 import { useSelector } from "react-redux";
 
 type BarProps = {
@@ -28,26 +28,23 @@ export const Bar = ({ grid, heights }: BarProps) => {
   });
 
   useEffect(() => {
-    console.log("x");
-    setAnimate(global.start);
-  }, [global.start]);
+    setBars(buildBars(grid, heights, [0, 0]));
+  }, []);
 
   useEffect(() => {
-    console.log("y");
-    setBars(buildBars(grid, heights, [0, 0]));
-  }, [grid, heights]);
+    setAnimate(global.start);
+  }, [global.start]);
 
   useEffect(() => {
     let animateID: any;
     if (animate) {
       const animate = () => {
-        let yy: any = selectionSort(grid, heights);
-        if (yy !== undefined) {
-          setBars(yy);
+        let algorithm: any = selectionSort(grid, heights);
+        if (algorithm !== undefined) {
+          setBars(algorithm);
           animateID = requestAnimationFrame(animate);
         }
       };
-
       animateID = requestAnimationFrame(animate);
     }
     return () => cancelAnimationFrame(animateID);

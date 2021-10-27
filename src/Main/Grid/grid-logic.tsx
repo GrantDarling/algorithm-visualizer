@@ -1,8 +1,7 @@
 import { shuffle } from "../../helpers/helpers";
 import { generateColor } from "../../helpers/helpers";
 
-import { bubbleSortInit } from "../algorithms/Sorting/BubbleSort/bubbleSortInit";
-import { highlightBarsInit, highlightBars } from "../algorithms/inits/inits";
+import { highlightBarsInit, highlightBars } from "../algorithms/highlightBars";
 
 export function createGrid(columns: number, rows: number): number[][] {
   console.log("called!");
@@ -79,64 +78,14 @@ export function buildBars(
   return bars;
 }
 
-export const isFinished = () => {
-  return true;
-};
+/* Selection Sort */
 
 let isInitialized: boolean = false;
-let nextBar: number;
+let cycleBars: number;
 let outerLoop: any;
 let currentInnerLoop: any;
 let innerLoopMax: any;
 let finished: any;
-
-export const bubbleSort = (grid: number[][], heights: number[]) => {
-  if (isInitialized === false) {
-    isInitialized = true;
-    nextBar = highlightBarsInit();
-    ({ outerLoop, currentInnerLoop, innerLoopMax, finished } =
-      bubbleSortInit(heights));
-  }
-
-  currentInnerLoop++;
-
-  if (currentInnerLoop >= innerLoopMax) {
-    currentInnerLoop = 1;
-    outerLoop++;
-    innerLoopMax--;
-  }
-
-  if (outerLoop < heights.length) {
-    let i: number = currentInnerLoop - 1;
-
-    if (heights[i] > heights[i + 1]) {
-      let x: any = buildBars(grid, heights, [i, i - 1]);
-      [heights[i], heights[i + 1]] = [heights[i + 1], heights[i]];
-      return x;
-    }
-
-    return buildBars(grid, heights, [i, i - 1]);
-  } else {
-    finished = true;
-  }
-
-  if (finished) {
-    nextBar++;
-    if (nextBar < heights.length) {
-      return highlightBars(nextBar, grid, heights);
-    } else {
-      console.log("trapped af");
-      //return false;
-      buildBars(grid, heights, [0, 0]);
-    }
-  }
-
-  console.log("never returns");
-  buildBars(grid, heights, [0, 0]);
-};
-
-/* Selection Sort */
-
 let currentMin: any;
 let currentItem: any;
 let advanceInnerLoop: number = 0;
@@ -163,17 +112,13 @@ export const selectionSort = (grid: number[][], heights: number[]) => {
     ({ outerLoop, currentInnerLoop, currentMin, currentItem, finished } =
       selectionSortInit(heights));
 
-    nextBar = highlightBarsInit();
+    cycleBars = highlightBarsInit();
   }
 
   function resetInnerLoop() {
     advanceInnerLoop++;
     currentInnerLoop = advanceInnerLoop;
     currentMin = heights[currentInnerLoop];
-  }
-
-  function advanceOuterLoop() {
-    outerLoop++;
   }
 
   function swap() {
@@ -188,16 +133,15 @@ export const selectionSort = (grid: number[][], heights: number[]) => {
 
   if (currentInnerLoop >= heights.length && outerLoop < heights.length) {
     swap();
-    advanceOuterLoop();
+    outerLoop++;
     resetInnerLoop();
-
     return buildBars(grid, heights, [currentInnerLoop, currentItem]);
   }
 
   if (outerLoop >= heights.length) {
-    nextBar++;
-    if (nextBar < heights.length) {
-      return highlightBars(nextBar, grid, heights);
+    cycleBars++;
+    if (cycleBars < heights.length) {
+      return highlightBars(cycleBars, grid, heights);
     }
   }
 

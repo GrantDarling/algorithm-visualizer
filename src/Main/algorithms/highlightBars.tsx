@@ -1,4 +1,4 @@
-import { buildBars } from "../../grid/grid-logic";
+import { buildBars } from "../grid/grid-logic";
 
 export const highlightBarsInit = () => {
   let nextBar: number = 0;
