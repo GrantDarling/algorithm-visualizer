@@ -2,7 +2,7 @@ import * as actionTypes from "./actionTypes";
 
 const initialState: GlobalState = {
   start: false,
-  gridSize: 30,
+  gridSize: 20,
 };
 
 const reducer = (

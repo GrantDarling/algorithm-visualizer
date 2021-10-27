@@ -23,6 +23,7 @@ export function createGrid(columns: number, rows: number): number[][] {
 /* Sorting Grid */
 
 export function assignBarHeights(grid: number[][]) {
+  console.log("Assign!");
   let heights: number[] = [];
   let counter: number = 0;
 
