@@ -1,5 +1,5 @@
-import { shuffle } from "../../helpers/helpers";
-import { generateColor } from "../../helpers/helpers";
+import { shuffle } from "../helpers/helpers";
+import { generateColor } from "../helpers/helpers";
 
 import { highlightBarsInit, highlightBars } from "../algorithms/highlightBars";
 

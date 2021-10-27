@@ -1,11 +1,13 @@
 interface IGlobal {
   start: boolean;
   gridSize: number;
+  algorithm: IAlgorithm;
 }
 
 declare type GlobalState = {
   start: boolean;
   gridSize: number;
+  algorithm: IAlgorithm;
 };
 
 declare type GlobalAction = {
@@ -13,20 +15,20 @@ declare type GlobalAction = {
   global: IGlobal;
 };
 
-interface IArticle {
-  id: number;
-  title: string;
-  body: string;
+interface IAlgorithm {
+  spaceComplexity: string;
+  timeComplexity: string;
 }
 
-type ArticleState = {
-  articles: IArticle[];
+declare type AlgorithmState = {
+  spaceComplexity: string;
+  timeComplexity: string;
 };
 
-type ArticleAction = {
+declare type AlgorithmAction = {
   type: string;
-  article: IArticle;
+  global: IAlgorithm;
 };
 
-type DispatchArticleType = (args: ArticleAction) => ArticleAction;
+type DispatchArticleType = (args: AlgorithmAction) => AlgorithmAction;
 type DispatchGlobalType = (args: GlobalAction) => GlobalAction;

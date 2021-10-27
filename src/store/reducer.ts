@@ -3,6 +3,10 @@ import * as actionTypes from "./actionTypes";
 const initialState: GlobalState = {
   start: false,
   gridSize: 10,
+  algorithm: {
+    timeComplexity: "sample",
+    spaceComplexity: "other sample",
+  },
 };
 
 const reducer = (

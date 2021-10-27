@@ -4,7 +4,7 @@ export const AlgorithmSelector = () => {
   return (
     <AlgorithmSelectorContainer>
       <label htmlFor="grid-size">Algorithm Type</label>
-      <select name="algorithm" id="cars">
+      <select name="algorithm" id="algorithm-selector">
         <option value="bubble-sort">Bubble Sort</option>
         <option value="selection-sort">Selection Sort</option>
         <option value="merge-sort">Merge Sort</option>

@@ -1,6 +1,13 @@
 import { highlightBarsInit, highlightBars } from "./highlightBars";
 import { buildBars } from "../grid/grid-logic";
 
+let isInitialized: boolean = false;
+let cycleBars: number;
+let outerLoop: any;
+let currentInnerLoop: any;
+let innerLoopMax: any;
+let finished: any;
+
 export const bubbleSortInit = (bars: number[]) => {
   let currentInnerLoop: number = 0;
   let outerLoop: number = 0;
@@ -9,13 +16,6 @@ export const bubbleSortInit = (bars: number[]) => {
 
   return { currentInnerLoop, outerLoop, innerLoopMax, finished };
 };
-
-let isInitialized: boolean = false;
-let cycleBars: number;
-let outerLoop: any;
-let currentInnerLoop: any;
-let innerLoopMax: any;
-let finished: any;
 
 export const bubbleSort = (grid: number[][], heights: number[]) => {
   if (isInitialized === false) {
