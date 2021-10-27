@@ -31,9 +31,7 @@ export function initiateBarHeights(grid: number[][]) {
     heights.push(height);
   }
 
-  console.log("heights before: ", heights);
   shuffle(heights);
-  console.log("heights after: ", heights);
   return heights;
 }
 
@@ -51,12 +49,13 @@ export function buildBars(
     active: boolean;
   }
 
-  console.log("SOMETHING");
-  const colorStart = "#ff3825";
-  const colorEnd = "#f4e57c";
-  const colorsLen = heights.length + 1;
+  if (colors.length !== heights.length) {
+    const colorStart = "#ff3825";
+    const colorEnd = "#f4e57c";
+    const colorsLen = heights.length + 1;
 
-  colors = generateColor(colorStart, colorEnd, colorsLen);
+    colors = generateColor(colorStart, colorEnd, colorsLen);
+  }
 
   let bars: Bar[] = [];
 
