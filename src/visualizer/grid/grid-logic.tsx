@@ -4,11 +4,10 @@ import { generateColor } from "../../helpers/helpers";
 import { highlightBarsInit, highlightBars } from "../algorithms/highlightBars";
 
 export function createGrid(columns: number, rows: number): number[][] {
-  console.log("called!");
   let grid: number[][] = [];
 
-  if (rows <= 1) rows = 1;
-  if (columns <= 1) columns = 1;
+  if (rows <= 0) rows = 0;
+  if (columns <= 0) columns = 0;
 
   for (let column: number = 0; column < columns; column++) {
     let temp_column = [];
@@ -18,15 +17,11 @@ export function createGrid(columns: number, rows: number): number[][] {
     grid.push(temp_column);
   }
 
-  console.log(grid, "is grid");
-  console.log(grid[0], "is grid");
   return grid;
 }
 
 /* Sorting Grid */
-
-export function assignBarHeights(grid: number[][]) {
-  console.log("Assign!");
+export function initiateBarHeights(grid: number[][]) {
   let heights: number[] = [];
   let counter: number = 0;
 
@@ -36,7 +31,9 @@ export function assignBarHeights(grid: number[][]) {
     heights.push(height);
   }
 
+  console.log("heights before: ", heights);
   shuffle(heights);
+  console.log("heights after: ", heights);
   return heights;
 }
 
@@ -54,17 +51,17 @@ export function buildBars(
     active: boolean;
   }
 
-  if (colors.length === 0) {
-    const colorStart = "#ff3825";
-    const colorEnd = "#f4e57c";
-    const colorsLen = heights.length + 1;
+  console.log("SOMETHING");
+  const colorStart = "#ff3825";
+  const colorEnd = "#f4e57c";
+  const colorsLen = heights.length + 1;
 
-    colors = generateColor(colorStart, colorEnd, colorsLen);
-  }
+  colors = generateColor(colorStart, colorEnd, colorsLen);
 
   let bars: Bar[] = [];
 
   grid.map((col, idx) => {
+    console.log(colors);
     let temp_bar: Bar = {
       height: heights[idx],
       location: col,

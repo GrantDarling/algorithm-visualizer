@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Column, Button } from "../../styles/styles";
-import { assignBarHeights } from "./grid-logic";
+import { buildBars, initiateBarHeights } from "./grid-logic";
 
 import { useSelector } from "react-redux";
 import { bubbleSort } from "../algorithms/bubbleSort";
@@ -29,7 +29,8 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
   });
 
   useEffect(() => {
-    setHeights(assignBarHeights(grid));
+    setHeights(initiateBarHeights(grid));
+    setBars(buildBars(grid, [], [-1, -1]));
   }, [grid]);
 
   useEffect(() => {
