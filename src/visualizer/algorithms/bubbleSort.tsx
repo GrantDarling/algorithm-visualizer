@@ -53,7 +53,6 @@ export const bubbleSort = (grid: number[][], heights: number[]) => {
       return highlightBars(cycleBars, grid, heights);
     } else {
       console.log("trapped af");
-      //return false;
       buildBars(grid, heights, [0, 0]);
     }
   }

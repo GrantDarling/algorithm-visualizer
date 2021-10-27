@@ -1,24 +1,24 @@
-import { SubHead, VisualizeButton } from "../../styles/styles";
-import { toggleStart } from "../../store/actionCreators";
-import { Dispatch } from "redux";
-import { useDispatch, useSelector } from "react-redux";
 import { CreateGrid } from "./create-grid";
 import { Complexity } from "./complexity";
 import { AlgorithmTypeSelector } from "./algorithm-type-selector";
 import { AlgorithmSelector } from "./algorithm-selector";
 
-import { Head } from "../../styles/styles";
+// styles
+import { Head, SubHead, VisualizeButton } from "../../styles/styles";
+
+// redux
+import { toggleStart } from "../../store/actionCreators";
+import { Dispatch } from "redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Header = () => {
+  const dispatch: Dispatch<any> = useDispatch();
   const start: IGlobal = useSelector((state: GlobalState) => {
     return {
       ...state,
       start: !state.start,
     };
   });
-
-  const dispatch: Dispatch<any> = useDispatch();
-
   return (
     <>
       <Head>Algorithm Visualizer</Head>
