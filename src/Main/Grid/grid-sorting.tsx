@@ -19,11 +19,6 @@ type SortingGridProps = {
 
 export const SortingGrid = ({ grid }: SortingGridProps) => {
   const [heights, setHeights] = useState<number[]>([]);
-
-  useEffect(() => {
-    setHeights(assignBarHeights(grid));
-  }, [grid]);
-
   let [bars, setBars] = useState<BarState[]>([]);
   let [animate, setAnimate] = useState<boolean>(false);
 
@@ -33,6 +28,10 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
       start: state.start,
     };
   });
+
+  useEffect(() => {
+    setHeights(assignBarHeights(grid));
+  }, [grid]);
 
   useEffect(() => {
     setAnimate(global.start);
