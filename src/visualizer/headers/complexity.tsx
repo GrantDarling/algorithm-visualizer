@@ -3,10 +3,7 @@ import { useSelector } from "react-redux";
 
 export const Complexity = () => {
   const global: IGlobal = useSelector((state: GlobalState) => {
-    return {
-      ...state,
-      gridSize: state.gridSize,
-    };
+    return { ...state };
   });
 
   return (
