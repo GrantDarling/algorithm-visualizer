@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Column, Button } from "../../styles/styles";
 import { buildBars, initiateBarHeights } from "./grid-logic";
-
 import { useSelector } from "react-redux";
 // import { bubbleSort } from "../algorithms/bubbleSort";
 import { selectionSort } from "../algorithms/selectionSort";
@@ -37,15 +36,14 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
     if (animate) {
       const animate = () => {
         let algorithm: BarState[] | undefined = selectionSort(grid, heights);
-
         if (algorithm !== undefined) {
           setBars(algorithm);
           animateID = requestAnimationFrame(animate);
         }
       };
-
       animateID = requestAnimationFrame(animate);
     }
+
     return () => cancelAnimationFrame(animateID);
   }, [animate, grid, heights]);
 

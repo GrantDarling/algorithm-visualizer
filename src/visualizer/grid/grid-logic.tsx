@@ -18,7 +18,6 @@ export function createGrid(columns: number, rows: number): number[][] {
   return grid;
 }
 
-/* Sorting Grid */
 export function initiateBarHeights(grid: number[][]) {
   let heights: number[] = [];
   let counter: number = 0;
@@ -33,7 +32,7 @@ export function initiateBarHeights(grid: number[][]) {
   return heights;
 }
 
-let colors: any[] = [];
+let colors: string[] = [];
 
 export function buildBars(
   grid: number[][],
@@ -47,7 +46,8 @@ export function buildBars(
     active: boolean;
   }
 
-  if (colors.length !== heights.length) {
+  if (colors.length !== heights.length + 1) {
+    console.log("reloading colors!");
     const colorStart = "#ff3825";
     const colorEnd = "#f4e57c";
     const colorsLength = heights.length + 1;
