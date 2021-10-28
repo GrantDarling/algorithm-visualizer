@@ -9,11 +9,13 @@ import { setGridSize } from "../../store/actionCreators";
 export const CreateGrid = () => {
   const dispatch: Dispatch<any> = useDispatch();
   const globalState = useSelector((state: GlobalState) => state);
-  const [grid, setGrid] = useState(globalState.gridSize);
+
+  const [global] = useState(globalState);
+  const [grid, setGrid] = useState(global.gridSize);
 
   useEffect(() => {
-    dispatch(setGridSize(globalState, grid));
-  }, [dispatch, globalState, grid]);
+    dispatch(setGridSize(global, grid));
+  }, [dispatch, global, grid]);
 
   return (
     <CreateGridContainer>
