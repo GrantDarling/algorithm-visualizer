@@ -52,9 +52,9 @@ export function buildBars(
   if (colors.length !== heights.length) {
     const colorStart = "#ff3825";
     const colorEnd = "#f4e57c";
-    const colorsLen = heights.length + 1;
+    const colorsLength = heights.length + 1;
 
-    colors = generateColor(colorStart, colorEnd, colorsLen);
+    colors = generateColor(colorStart, colorEnd, colorsLength);
   }
 
   let bars: Bar[] = [];

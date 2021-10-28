@@ -49,7 +49,7 @@ export function generateColor(
   const start: any = convertToRGB(colorStart);
   const end: any = convertToRGB(colorEnd);
 
-  const len: number = colorCount;
+  const len: number = colorCount - 2;
   const colors: any[] = [];
 
   let alpha: number = 0.0;
@@ -64,6 +64,9 @@ export function generateColor(
 
     colors.push("#" + convertToHex(c));
   }
+
+  colors.push(colorStart);
+  colors.unshift(colorEnd);
 
   return colors;
 }
