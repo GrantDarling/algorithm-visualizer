@@ -3,11 +3,11 @@ import { AlgorithmTypeSelectorContainer } from "../../styles/styles";
 export const AlgorithmTypeSelector = () => {
   return (
     <AlgorithmTypeSelectorContainer>
-      <label htmlFor="grid-size">Algorithm Type</label>
-      <select name="cars" id="cars">
-        <option value="volvo">Sort</option>
-        <option value="saab">Search</option>
-        <option value="mercedes">Graph</option>
+      <label htmlFor="algorithm-type">Algorithm Type</label>
+      <select name="algorithm-type" id="algorithm-type">
+        <option value="sort">Sort</option>
+        <option value="search">Search</option>
+        <option value="graph">Graph</option>
       </select>
     </AlgorithmTypeSelectorContainer>
   );
