@@ -1,6 +1,6 @@
 import * as Grid from "./grid-logic";
 
-describe("createGrid Tests:", () => {
+describe("createGrid tests:", () => {
   test("1 column x 3 rows", () => {
     const grid = Grid.createGrid(1, 3);
     expect(grid).toEqual(expect.arrayContaining([[0, 1, 2]]));
@@ -24,7 +24,7 @@ describe("createGrid Tests:", () => {
   });
 });
 
-describe("initiateBarHeights Tests:", () => {
+describe("initiateBarHeights tests:", () => {
   test("barMaxHeight empty = undefined", () => {
     const heights = Grid.initiateBarHeights([]);
     expect(heights[0]).toBe(undefined);
