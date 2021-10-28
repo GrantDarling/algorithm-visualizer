@@ -1,8 +1,6 @@
 import { shuffle } from "../helpers/helpers";
 import { generateColor } from "../helpers/helpers";
 
-import { highlightBarsInit, highlightBars } from "../algorithms/highlightBars";
-
 export function createGrid(columns: number, rows: number): number[][] {
   let grid: number[][] = [];
 
@@ -60,7 +58,6 @@ export function buildBars(
   let bars: Bar[] = [];
 
   grid.map((col, idx) => {
-    console.log(colors);
     let temp_bar: Bar = {
       height: heights[idx],
       location: col,
@@ -77,83 +74,3 @@ export function buildBars(
 
   return bars;
 }
-
-/* Selection Sort */
-
-let isInitialized: boolean = false;
-let cycleBars: number;
-let outerLoop: any;
-let currentInnerLoop: any;
-let innerLoopMax: any;
-let finished: any;
-let currentMin: any;
-let currentItem: any;
-let advanceInnerLoop: number = 0;
-
-const selectionSortInit = (bars: number[]) => {
-  let currentInnerLoop: number = 0;
-  let outerLoop: number = 0;
-  let currentMin: number = bars[0];
-  let finished: boolean = false;
-
-  return {
-    currentInnerLoop,
-    outerLoop,
-    currentMin,
-    currentItem,
-    finished,
-  };
-};
-
-export const selectionSort = (grid: number[][], heights: number[]) => {
-  function initialize() {
-    isInitialized = true;
-
-    ({ outerLoop, currentInnerLoop, currentMin, currentItem, finished } =
-      selectionSortInit(heights));
-
-    cycleBars = highlightBarsInit();
-  }
-
-  function resetInnerLoop() {
-    advanceInnerLoop++;
-    currentInnerLoop = advanceInnerLoop;
-    currentMin = heights[currentInnerLoop];
-  }
-
-  function swap() {
-    let currentMinHeight: any = heights[heights.indexOf(currentMin)];
-    heights[heights.indexOf(currentMin)] = heights[outerLoop];
-    heights[outerLoop] = currentMinHeight;
-  }
-
-  if (!isInitialized) initialize();
-
-  currentInnerLoop++;
-
-  if (currentInnerLoop >= heights.length && outerLoop < heights.length) {
-    swap();
-    outerLoop++;
-    resetInnerLoop();
-    return buildBars(grid, heights, [currentInnerLoop, currentItem]);
-  }
-
-  if (outerLoop >= heights.length) {
-    cycleBars++;
-    if (cycleBars < heights.length) {
-      return highlightBars(cycleBars, grid, heights);
-    }
-  }
-
-  if (currentInnerLoop < heights.length && outerLoop < heights.length) {
-    let currentItem = currentInnerLoop;
-    let minIdx: any = heights.indexOf(currentMin);
-
-    if (heights[currentItem] < currentMin) {
-      currentMin = heights[currentItem];
-      let x: any = buildBars(grid, heights, [minIdx, currentItem]);
-      return x;
-    }
-    return buildBars(grid, heights, [minIdx, currentItem]);
-  }
-};

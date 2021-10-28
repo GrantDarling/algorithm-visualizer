@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Column, Button } from "../../styles/styles";
-import { buildBars, initiateBarHeights, selectionSort } from "./grid-logic";
+import { buildBars, initiateBarHeights } from "./grid-logic";
 
 import { useSelector } from "react-redux";
 // import { bubbleSort } from "../algorithms/bubbleSort";
+import { selectionSort } from "../algorithms/selectionSort";
 
 interface BarState {
   height: number;
