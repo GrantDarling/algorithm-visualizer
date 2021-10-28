@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Column, Button } from "../../styles/styles";
-import { buildBars, initiateBarHeights } from "./grid-logic";
+import { buildBars, initiateBarHeights, selectionSort } from "./grid-logic";
 
 import { useSelector } from "react-redux";
-import { bubbleSort } from "../algorithms/bubbleSort";
+// import { bubbleSort } from "../algorithms/bubbleSort";
 
 interface BarState {
   height: number;
@@ -17,36 +17,33 @@ type SortingGridProps = {
 };
 
 export const SortingGrid = ({ grid }: SortingGridProps) => {
+  const start: boolean = useSelector((state: GlobalState) => state.start);
   const [heights, setHeights] = useState<number[]>([]);
+
   let [bars, setBars] = useState<BarState[]>([]);
   let [animate, setAnimate] = useState<boolean>(false);
 
-  const global: IGlobal = useSelector((state: GlobalState) => {
-    return {
-      ...state,
-      start: state.start,
-    };
-  });
-
-  useEffect(() => {
+  const initalize = (grid: number[][]) => {
     setHeights(initiateBarHeights(grid));
     setBars(buildBars(grid, [], [-1, -1]));
-  }, [grid]);
+  };
+
+  useEffect(() => initalize(grid), [grid]);
+  useEffect(() => setAnimate(start), [start]);
 
   useEffect(() => {
-    setAnimate(global.start);
-  }, [global.start]);
+    let animateID: number;
 
-  useEffect(() => {
-    let animateID: any;
     if (animate) {
       const animate = () => {
-        let algorithm: any = bubbleSort(grid, heights);
+        let algorithm: BarState[] | undefined = selectionSort(grid, heights);
+
         if (algorithm !== undefined) {
           setBars(algorithm);
           animateID = requestAnimationFrame(animate);
         }
       };
+
       animateID = requestAnimationFrame(animate);
     }
     return () => cancelAnimationFrame(animateID);
