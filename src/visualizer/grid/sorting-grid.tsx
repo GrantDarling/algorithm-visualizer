@@ -19,9 +19,8 @@ type SortingGridProps = {
 export const SortingGrid = ({ grid }: SortingGridProps) => {
   const start: boolean = useSelector((state: GlobalState) => state.start);
   const [heights, setHeights] = useState<number[]>([]);
-
-  let [bars, setBars] = useState<BarState[]>([]);
-  let [animate, setAnimate] = useState<boolean>(false);
+  const [bars, setBars] = useState<BarState[]>([]);
+  const [animate, setAnimate] = useState<boolean>(false);
 
   const initalize = (grid: number[][]) => {
     setHeights(initiateBarHeights(grid));
