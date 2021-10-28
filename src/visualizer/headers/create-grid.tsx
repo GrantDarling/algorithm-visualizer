@@ -1,26 +1,21 @@
-import { CreateGridContainer } from "../../styles/styles";
 import { useState, useEffect } from "react";
-import { setGridSize } from "../../store/actionCreators";
+import { CreateGridContainer } from "../../styles/styles";
 
+// redux
 import { Dispatch } from "redux";
 import { useDispatch, useSelector } from "react-redux";
+import { setGridSize } from "../../store/actionCreators";
 
 export const CreateGrid = () => {
-  const [value, setValue] = useState(10);
+  const dispatch: Dispatch<any> = useDispatch();
+  const globalState = useSelector((state: GlobalState) => state);
 
-  const gridSize: IGlobal = useSelector((state: GlobalState) => {
-    return {
-      ...state,
-      gridSize: value,
-    };
-  });
+  const [global] = useState(globalState);
+  const [grid, setGrid] = useState(global.gridSize);
 
   useEffect(() => {
-    console.log("value");
-    dispatch(setGridSize(gridSize));
-  }, [value]);
-
-  const dispatch: Dispatch<any> = useDispatch();
+    dispatch(setGridSize(global, grid));
+  }, [dispatch, global, grid]);
 
   return (
     <CreateGridContainer>
@@ -29,8 +24,8 @@ export const CreateGrid = () => {
         type="text"
         name="grid-size"
         placeholder="Max: 100"
-        value={Number(value)}
-        onChange={(e) => setValue(Number(e.target.value))}
+        value={Number(grid)}
+        onChange={(e) => setGrid(Number(e.target.value))}
       />
     </CreateGridContainer>
   );

@@ -24,6 +24,10 @@ const reducer = (
         ...state,
         gridSize: action.global.gridSize,
       };
+    case actionTypes.CHANGE_ALGORITHM:
+      return {
+        ...state,
+      };
   }
   return state;
 };

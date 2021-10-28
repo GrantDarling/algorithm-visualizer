@@ -9,17 +9,17 @@ export function toggleStart(global: IGlobal) {
   return dispatchGlobal(action);
 }
 
-export function setGridSize(global: IGlobal) {
+export function setGridSize(global: IGlobal, gridSize: number) {
   const action: GlobalAction = {
     type: actionTypes.GRID_SIZE,
-    global,
+    global: { ...global, gridSize },
   };
   return dispatchGlobal(action);
 }
 
 export function setAlgorithm(global: IGlobal) {
   const action: GlobalAction = {
-    type: actionTypes.CHANGE_ALGORITHM,
+    type: actionTypes.GRID_SIZE,
     global,
   };
   return dispatchGlobal(action);
