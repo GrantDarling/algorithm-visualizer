@@ -3,6 +3,7 @@ import { buildBars } from "../grid/grid-logic";
 let isInitialized: boolean = false;
 let outerLoop: number;
 let activeBar: number;
+let victoryLap: number;
 let currentMinBar: number;
 let advanceInnerLoop: number = 0;
 
@@ -10,24 +11,26 @@ const selectionSortInit = (bars: number[]) => {
   let activeBar: number = 0;
   let outerLoop: number = 0;
   let currentMinBar: number = bars[0];
+  let victoryLap: number = 0;
 
   return {
     activeBar,
     outerLoop,
+    victoryLap,
     currentMinBar,
   };
 };
 
 function initialize(barHeights: any) {
   isInitialized = true;
-  ({ outerLoop, activeBar, currentMinBar } = selectionSortInit(barHeights));
+  ({ outerLoop, activeBar, currentMinBar, victoryLap } =
+    selectionSortInit(barHeights));
 }
 
 function resetInnerLoop(barHeights: any) {
   advanceInnerLoop++;
   activeBar = advanceInnerLoop;
   currentMinBar = barHeights[activeBar];
-  if (outerLoop === barHeights.length) activeBar = 0; // victory loop
 }
 
 function swap(barHeights: any) {
@@ -60,4 +63,11 @@ export const selectionSort = (grid: number[][], barHeights: number[]) => {
 
     return buildBars(grid, barHeights, [activeBar, activeBar]);
   }
+  // 3. final loop
+  else if (victoryLap < barHeights.length) {
+    victoryLap++;
+    return buildBars(grid, barHeights, [victoryLap, victoryLap - 1]);
+  }
+
+  return undefined;
 };
