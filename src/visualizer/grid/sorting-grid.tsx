@@ -35,7 +35,7 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
 
     if (animate) {
       const animate = () => {
-        let algorithm: BarState[] | undefined = selectionSort(grid, heights);
+        const algorithm: BarState[] | undefined = selectionSort(grid, heights);
         if (algorithm !== undefined) {
           setBars(algorithm);
           animateID = requestAnimationFrame(animate);

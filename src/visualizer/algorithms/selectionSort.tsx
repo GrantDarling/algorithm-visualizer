@@ -1,78 +1,63 @@
-import { highlightBarsInit, highlightBars } from "./highlightBars";
 import { buildBars } from "../grid/grid-logic";
 
-/* Selection Sort */
-
 let isInitialized: boolean = false;
-let cycleBars: number;
-let outerLoop: any;
-let currentInnerLoop: any;
-let currentMin: any;
-let currentItem: any;
+let outerLoop: number;
+let activeBar: number;
+let currentMinBar: number;
 let advanceInnerLoop: number = 0;
 
 const selectionSortInit = (bars: number[]) => {
-  let currentInnerLoop: number = 0;
+  let activeBar: number = 0;
   let outerLoop: number = 0;
-  let currentMin: number = bars[0];
+  let currentMinBar: number = bars[0];
 
   return {
-    currentInnerLoop,
+    activeBar,
     outerLoop,
-    currentMin,
-    currentItem,
+    currentMinBar,
   };
 };
 
-export const selectionSort = (grid: number[][], heights: number[]) => {
-  function initialize() {
-    isInitialized = true;
+function initialize(barHeights: any) {
+  isInitialized = true;
+  ({ outerLoop, activeBar, currentMinBar } = selectionSortInit(barHeights));
+}
 
-    ({ outerLoop, currentInnerLoop, currentMin, currentItem } =
-      selectionSortInit(heights));
+function resetInnerLoop(barHeights: any) {
+  advanceInnerLoop++;
+  activeBar = advanceInnerLoop;
+  currentMinBar = barHeights[activeBar];
+  if (outerLoop === barHeights.length) activeBar = 0; // victory loop
+}
 
-    cycleBars = highlightBarsInit();
-  }
+function swap(barHeights: any) {
+  let currentMinBarHeight: number =
+    barHeights[barHeights.indexOf(currentMinBar)];
+  barHeights[barHeights.indexOf(currentMinBar)] = barHeights[outerLoop];
+  barHeights[outerLoop] = currentMinBarHeight;
+}
 
-  function resetInnerLoop() {
-    advanceInnerLoop++;
-    currentInnerLoop = advanceInnerLoop;
-    currentMin = heights[currentInnerLoop];
-  }
+export const selectionSort = (grid: number[][], barHeights: number[]) => {
+  if (!isInitialized) initialize(barHeights);
 
-  function swap() {
-    let currentMinHeight: any = heights[heights.indexOf(currentMin)];
-    heights[heights.indexOf(currentMin)] = heights[outerLoop];
-    heights[outerLoop] = currentMinHeight;
-  }
+  activeBar++;
 
-  if (!isInitialized) initialize();
+  // 1. loop through bars
+  if (activeBar < barHeights.length) {
+    let minItemIndex: number = barHeights.indexOf(currentMinBar);
 
-  currentInnerLoop++;
+    if (barHeights[activeBar] < currentMinBar) {
+      currentMinBar = barHeights[activeBar];
+    }
 
-  if (currentInnerLoop >= heights.length && outerLoop < heights.length) {
-    swap();
+    return buildBars(grid, barHeights, [minItemIndex, activeBar]);
+
+    // 2. swap heights, advance outerloop & restart
+  } else if (outerLoop < barHeights.length) {
+    swap(barHeights);
     outerLoop++;
-    resetInnerLoop();
-    return buildBars(grid, heights, [currentInnerLoop, currentItem]);
-  }
+    resetInnerLoop(barHeights);
 
-  if (outerLoop >= heights.length) {
-    cycleBars++;
-    if (cycleBars < heights.length) {
-      return highlightBars(cycleBars, grid, heights);
-    }
-  }
-
-  if (currentInnerLoop < heights.length && outerLoop < heights.length) {
-    let currentItem = currentInnerLoop;
-    let minIdx: any = heights.indexOf(currentMin);
-
-    if (heights[currentItem] < currentMin) {
-      currentMin = heights[currentItem];
-      let x: any = buildBars(grid, heights, [minIdx, currentItem]);
-      return x;
-    }
-    return buildBars(grid, heights, [minIdx, currentItem]);
+    return buildBars(grid, barHeights, [activeBar, activeBar]);
   }
 };

@@ -1,6 +1,13 @@
 import { shuffle } from "../helpers/helpers";
 import { generateColor } from "../helpers/helpers";
 
+interface Bar {
+  height: number;
+  location: number[];
+  color: string;
+  active: boolean;
+}
+
 export function createGrid(columns: number, rows: number): number[][] {
   let grid: number[][] = [];
 
@@ -32,6 +39,13 @@ export function initiateBarHeights(grid: number[][]) {
   return heights;
 }
 
+function buildColors(heights: number[]) {
+  const colorStart = "#ff3825";
+  const colorEnd = "#f4e57c";
+  const colorsLength = heights.length + 1;
+  return generateColor(colorStart, colorEnd, colorsLength);
+}
+
 let colors: string[] = [];
 
 export function buildBars(
@@ -39,28 +53,12 @@ export function buildBars(
   heights: number[],
   active: number[]
 ) {
-  interface Bar {
-    height: number;
-    location: number[];
-    color: string;
-    active: boolean;
-  }
-
-  if (colors.length !== heights.length + 1) {
-    console.log("reloading colors!");
-    const colorStart = "#ff3825";
-    const colorEnd = "#f4e57c";
-    const colorsLength = heights.length + 1;
-
-    colors = generateColor(colorStart, colorEnd, colorsLength);
-  }
-
+  if (colors.length !== heights.length + 1) colors = buildColors(heights);
   let bars: Bar[] = [];
-
-  grid.map((col, idx) => {
+  grid.map((column_length, idx) => {
     let temp_bar: Bar = {
       height: heights[idx],
-      location: col,
+      location: column_length,
       color: colors[heights[idx]],
       active:
         heights[idx] === heights[active[0]] ||
@@ -68,7 +66,6 @@ export function buildBars(
           ? true
           : false,
     };
-
     return bars.push(temp_bar);
   });
 

@@ -40,3 +40,7 @@ describe("initiateBarHeights tests:", () => {
     expect(heights[0]).toBeLessThanOrEqual(4);
   });
 });
+
+describe("buildBars tests:", () => {
+  test("buildColors only runs when heights change", () => {});
+});
