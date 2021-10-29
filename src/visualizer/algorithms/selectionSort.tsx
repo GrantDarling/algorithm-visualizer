@@ -54,7 +54,6 @@ export const selectionSort = (grid: number[][], barHeights: number[]) => {
     }
 
     return buildBars(grid, barHeights, [minItemIndex, activeBar]);
-
     // 2. swap heights, advance outerloop & restart
   } else if (outerLoop < barHeights.length) {
     swap(barHeights);
@@ -62,9 +61,8 @@ export const selectionSort = (grid: number[][], barHeights: number[]) => {
     resetInnerLoop(barHeights);
 
     return buildBars(grid, barHeights, [activeBar, activeBar]);
-  }
-  // 3. final loop
-  else if (victoryLap < barHeights.length) {
+    // 3. final loop
+  } else if (victoryLap < barHeights.length) {
     victoryLap++;
     return buildBars(grid, barHeights, [victoryLap, victoryLap - 1]);
   }
