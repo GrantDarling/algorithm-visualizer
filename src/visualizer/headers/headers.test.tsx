@@ -36,6 +36,24 @@ describe("Header Components", () => {
       const component = findByTestAttribute(wrapper, "algorithm-option");
       expect(component.length).toBe(3);
     });
+
+    it("should set the correct bubble sort selected state", () => {
+      const option = wrapper.find('option[data-testid="bubble-sort"]');
+      option.simulate("click");
+      expect(option.props().value).toBe("bubbleSort");
+    });
+
+    it("should set the correct selection sort selected state", () => {
+      const option = wrapper.find('option[data-testid="selection-sort"]');
+      option.simulate("click");
+      expect(option.props().value).toBe("selectionSort");
+    });
+
+    it("should set the correct merge sort selected state", () => {
+      const option = wrapper.find('option[data-testid="merge-sort"]');
+      option.simulate("click");
+      expect(option.props().value).toBe("mergeSort");
+    });
   });
 
   describe("Algorithm Type Selector Component", () => {

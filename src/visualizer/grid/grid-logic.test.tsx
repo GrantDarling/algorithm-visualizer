@@ -1,4 +1,10 @@
 import * as Grid from "./grid-logic";
+// import { shallow, configure } from "enzyme";
+// import EnzymeAdapter from "@wojtekmaj/enzyme-adapter-react-17";
+
+// import { SortingGrid } from "./sorting-grid";
+
+// configure({ adapter: new EnzymeAdapter() });
 
 describe("createGrid tests:", () => {
   test("1 column x 3 rows", () => {
@@ -40,3 +46,18 @@ describe("initiateBarHeights tests:", () => {
     expect(heights[0]).toBeLessThanOrEqual(4);
   });
 });
+
+// describe("setAlgorithm tests", () => {
+//   const grid = [[0], [0], [0]];
+//   const setUp = (props = { grid }) => {
+//     const component = shallow(<SortingGrid {...props} />);
+//     return component;
+//   };
+
+//   let wrapper: any;
+//   beforeEach(() => {
+//     wrapper = setUp();
+//   });
+
+//   it("calls click event", () => {});
+// });
