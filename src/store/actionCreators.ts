@@ -17,6 +17,14 @@ export function setGridSize(global: IGlobal, gridSize: number) {
   return dispatchGlobal(action);
 }
 
+export function changeAlgorithm(global: IGlobal) {
+  const action: GlobalAction = {
+    type: actionTypes.CHANGE_ALGORITHM,
+    global: { ...global },
+  };
+  return dispatchGlobal(action);
+}
+
 export function setAlgorithm(global: IGlobal) {
   const action: GlobalAction = {
     type: actionTypes.GRID_SIZE,

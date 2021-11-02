@@ -16,6 +16,7 @@ declare type GlobalAction = {
 };
 
 interface IAlgorithm {
+  type: string;
   spaceComplexity: string;
   timeComplexity: string;
 }
