@@ -18,14 +18,17 @@ export const CreateGrid = () => {
   }, [dispatch, global, grid]);
 
   return (
-    <CreateGridContainer>
-      <label htmlFor="grid-size">Array_Size</label>
+    <CreateGridContainer data-test="create-grid">
+      <label htmlFor="grid-size" data-test="create-grid-label">
+        Array_Size
+      </label>
       <input
         type="text"
         name="grid-size"
         placeholder="Max: 100"
         value={Number(grid)}
         onChange={(e) => setGrid(Number(e.target.value))}
+        data-test="create-grid-input"
       />
     </CreateGridContainer>
   );
