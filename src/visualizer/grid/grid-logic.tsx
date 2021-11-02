@@ -1,5 +1,7 @@
 import { shuffle } from "../helpers/helpers";
 import { generateColor } from "../helpers/helpers";
+import { bubbleSort } from "../algorithms/bubbleSort";
+import { selectionSort } from "../algorithms/selectionSort";
 
 interface Bar {
   height: number;
@@ -71,3 +73,18 @@ export function buildBars(
 
   return bars;
 }
+
+export const algorithmSelector = (
+  algorithm: string,
+  grid: number[][],
+  heights: number[]
+) => {
+  switch (algorithm) {
+    case "bubbleSort":
+      return bubbleSort(grid, heights);
+    case "selectionSort":
+      return selectionSort(grid, heights);
+    default:
+      return undefined;
+  }
+};

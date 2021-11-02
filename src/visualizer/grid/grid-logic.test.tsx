@@ -1,10 +1,4 @@
 import * as Grid from "./grid-logic";
-// import { shallow, configure } from "enzyme";
-// import EnzymeAdapter from "@wojtekmaj/enzyme-adapter-react-17";
-
-// import { SortingGrid } from "./sorting-grid";
-
-// configure({ adapter: new EnzymeAdapter() });
 
 describe("createGrid tests:", () => {
   test("1 column x 3 rows", () => {
@@ -47,17 +41,32 @@ describe("initiateBarHeights tests:", () => {
   });
 });
 
-// describe("setAlgorithm tests", () => {
-//   const grid = [[0], [0], [0]];
-//   const setUp = (props = { grid }) => {
-//     const component = shallow(<SortingGrid {...props} />);
-//     return component;
-//   };
+describe("algorithmSelector tests", () => {
+  const grid = [[0], [0], [0]];
+  const heights = [1, 2, 3, 4, 5, 6];
+  const bubbleSort = [
+    { active: true, color: "#f6c26a", height: 1, location: [0] },
+    { active: false, color: "#f89f59", height: 2, location: [0] },
+    { active: false, color: "#fa7d47", height: 3, location: [0] },
+  ];
+  const selectionSort = [
+    { height: 1, location: [0], color: "#f6c26a", active: true },
+    { height: 2, location: [0], color: "#f89f59", active: true },
+    { height: 3, location: [0], color: "#fa7d47", active: false },
+  ];
 
-//   let wrapper: any;
-//   beforeEach(() => {
-//     wrapper = setUp();
-//   });
+  it("returns bubbleSort correctly", () => {
+    const returnValue = Grid.algorithmSelector("bubbleSort", grid, heights);
+    expect(returnValue).toStrictEqual(bubbleSort);
+  });
 
-//   it("calls click event", () => {});
-// });
+  it("returns selectionSort correctly", () => {
+    const returnValue = Grid.algorithmSelector("selectionSort", grid, heights);
+    expect(returnValue).toStrictEqual(selectionSort);
+  });
+
+  it("returns undefined if not a value", () => {
+    const returnValue = Grid.algorithmSelector("otherSort", grid, heights);
+    expect(returnValue).toStrictEqual(undefined);
+  });
+});
