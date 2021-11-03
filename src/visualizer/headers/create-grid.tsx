@@ -23,11 +23,15 @@ export const CreateGrid = () => {
         Array_Size
       </label>
       <input
-        type="text"
+        type="number"
         name="grid-size"
         placeholder="Max: 100"
         value={Number(grid)}
-        onChange={(e) => setGrid(Number(e.target.value))}
+        onChange={(e) =>
+          Number(e.target.value) > 30
+            ? setGrid(30)
+            : setGrid(Number(e.target.value))
+        }
         data-test="create-grid-input"
       />
     </CreateGridContainer>
