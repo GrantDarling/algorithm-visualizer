@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Column, Button } from "../../styles/styles";
 import { buildBars, initiateBarHeights, algorithmSelector } from "./grid-logic";
 import { useSelector } from "react-redux";
@@ -20,6 +20,7 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
   const [bars, setBars] = useState<BarState[]>([]);
   const [animate, setAnimate] = useState<boolean>(false);
   const [restart, setRestart] = useState<boolean>(false);
+  const animateID = useRef<any>(0);
 
   const initalize = (grid: number[][]) => {
     setHeights(initiateBarHeights(grid));
@@ -33,8 +34,7 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
   }, [global.start, grid]);
 
   useEffect(() => {
-    let animateID: number;
-
+    console.log(animate);
     if (animate) {
       const animate = () => {
         const algorithm: BarState[] | undefined = algorithmSelector(
@@ -46,15 +46,18 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
         if (algorithm !== undefined) {
           setBars(algorithm);
           setRestart(false);
-          animateID = requestAnimationFrame(animate);
+          animateID.current = requestAnimationFrame(animate);
         }
       };
-      animateID = requestAnimationFrame(animate);
+      animateID.current = requestAnimationFrame(animate);
     } else {
       setRestart(true);
     }
 
-    return () => cancelAnimationFrame(animateID);
+    return () => {
+      console.log("cance;");
+      cancelAnimationFrame(animateID.current);
+    };
   }, [animate, grid, heights, global.algorithm.type, global.start, restart]);
 
   return (
