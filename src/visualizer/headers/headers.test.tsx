@@ -12,6 +12,8 @@ configure({ adapter: new EnzymeAdapter() });
 
 describe("Header Components", () => {
   describe("Algorithm Selector Component", () => {
+    const useSelectorMock = jest.spyOn(redux, "useSelector");
+
     const setUp = (props = {}) => {
       const component = shallow(<AlgorithmSelector {...props} />);
       return component;
@@ -19,6 +21,14 @@ describe("Header Components", () => {
 
     let wrapper: any;
     beforeEach(() => {
+      useSelectorMock.mockClear();
+      useSelectorMock.mockReturnValue({
+        algorithm: {
+          type: "bubbleSort",
+          timeComplexity: "time",
+          spaceComplexity: "space",
+        },
+      });
       wrapper = setUp();
     });
 

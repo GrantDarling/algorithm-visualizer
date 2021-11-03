@@ -5,8 +5,8 @@ const initialState: GlobalState = {
   gridSize: 10,
   algorithm: {
     type: "bubbleSort",
-    timeComplexity: "sample",
-    spaceComplexity: "other sample",
+    timeComplexity: "O(n²)",
+    spaceComplexity: "O(1)",
   },
 };
 
@@ -31,6 +31,8 @@ const reducer = (
         algorithm: {
           ...state.algorithm,
           type: action.global.algorithm.type,
+          timeComplexity: action.global.algorithm.timeComplexity,
+          spaceComplexity: action.global.algorithm.spaceComplexity,
         },
       };
   }
