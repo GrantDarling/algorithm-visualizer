@@ -19,7 +19,7 @@ export const Header = () => {
         <AlgorithmTypeSelector />
         <AlgorithmSelector />
         <VisualizeButton onClick={() => dispatch(toggleStart(globalState))}>
-          visualize
+          {globalState.start ? "stop" : "visualize"}
         </VisualizeButton>
         <CreateGrid />
         <Complexity />

@@ -77,13 +77,14 @@ export function buildBars(
 export const algorithmSelector = (
   algorithm: string,
   grid: number[][],
-  heights: number[]
+  heights: number[],
+  restart: boolean
 ) => {
   switch (algorithm) {
     case "bubbleSort":
-      return bubbleSort(grid, heights);
+      return bubbleSort(grid, heights, restart);
     case "selectionSort":
-      return selectionSort(grid, heights);
+      return selectionSort(grid, heights, restart);
     default:
       return undefined;
   }

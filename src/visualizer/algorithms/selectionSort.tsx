@@ -5,25 +5,27 @@ let outerLoop: number;
 let activeBar: number;
 let victoryLap: number;
 let currentMinBar: number;
-let advanceInnerLoop: number = 0;
+let advanceInnerLoop: number;
 
 const selectionSortInit = (bars: number[]) => {
   let activeBar: number = 0;
   let outerLoop: number = 0;
   let currentMinBar: number = bars[0];
   let victoryLap: number = 0;
+  let advanceInnerLoop: number = 0;
 
   return {
     activeBar,
     outerLoop,
     victoryLap,
     currentMinBar,
+    advanceInnerLoop,
   };
 };
 
 function initialize(barHeights: any) {
   isInitialized = true;
-  ({ outerLoop, activeBar, currentMinBar, victoryLap } =
+  ({ outerLoop, activeBar, currentMinBar, victoryLap, advanceInnerLoop } =
     selectionSortInit(barHeights));
 }
 
@@ -40,8 +42,14 @@ function swap(barHeights: any) {
   barHeights[outerLoop] = currentMinBarHeight;
 }
 
-export const selectionSort = (grid: number[][], barHeights: number[]) => {
-  if (!isInitialized) initialize(barHeights);
+export const selectionSort = (
+  grid: number[][],
+  barHeights: number[],
+  restart: boolean
+) => {
+  if (!isInitialized || restart) initialize(barHeights);
+
+  console.log(activeBar);
 
   activeBar++;
 

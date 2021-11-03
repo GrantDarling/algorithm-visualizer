@@ -21,8 +21,12 @@ function initialize(barHeights: any) {
     bubbleSortInit(barHeights));
 }
 
-export const bubbleSort = (grid: number[][], barHeights: number[]) => {
-  if (!isInitialized) initialize(barHeights);
+export const bubbleSort = (
+  grid: number[][],
+  barHeights: number[],
+  restart: boolean
+) => {
+  if (!isInitialized || restart) initialize(barHeights);
 
   activeBar++;
 

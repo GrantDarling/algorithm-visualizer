@@ -19,6 +19,7 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
   const [heights, setHeights] = useState<number[]>([]);
   const [bars, setBars] = useState<BarState[]>([]);
   const [animate, setAnimate] = useState<boolean>(false);
+  const [restart, setRestart] = useState<boolean>(false);
 
   const initalize = (grid: number[][]) => {
     setHeights(initiateBarHeights(grid));
@@ -26,7 +27,10 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
   };
 
   useEffect(() => initalize(grid), [grid]);
-  useEffect(() => setAnimate(global.start), [global.start]);
+  useEffect(() => {
+    setAnimate(global.start);
+    setHeights(initiateBarHeights(grid));
+  }, [global.start, grid]);
 
   useEffect(() => {
     let animateID: number;
@@ -36,18 +40,23 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
         const algorithm: BarState[] | undefined = algorithmSelector(
           global.algorithm.type,
           grid,
-          heights
+          heights,
+          restart
         );
         if (algorithm !== undefined) {
           setBars(algorithm);
+          setRestart(false);
+          console.log(restart);
           animateID = requestAnimationFrame(animate);
         }
       };
       animateID = requestAnimationFrame(animate);
+    } else {
+      setRestart(true);
     }
 
     return () => cancelAnimationFrame(animateID);
-  }, [animate, grid, heights, global.algorithm.type]);
+  }, [animate, grid, heights, global.algorithm.type, global.start, restart]);
 
   return (
     <div id="grid-container">
