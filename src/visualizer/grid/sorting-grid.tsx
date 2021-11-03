@@ -46,7 +46,6 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
         if (algorithm !== undefined) {
           setBars(algorithm);
           setRestart(false);
-          console.log(restart);
           animateID = requestAnimationFrame(animate);
         }
       };

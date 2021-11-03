@@ -49,8 +49,6 @@ export const selectionSort = (
 ) => {
   if (!isInitialized || restart) initialize(barHeights);
 
-  console.log(activeBar);
-
   activeBar++;
 
   // 1. loop through bars

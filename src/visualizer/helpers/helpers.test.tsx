@@ -25,8 +25,6 @@ describe("generateColor tests:", () => {
       colorEnd,
       colorsLength
     );
-
-    console.log(colorsArray);
     expect(colorsArray.length).toBe(colorsLength);
   });
 
