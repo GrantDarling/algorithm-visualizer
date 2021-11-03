@@ -10,12 +10,6 @@ export const AlgorithmTypeSelector = () => {
         <option value="sort" data-test="algorithm-option">
           Sort
         </option>
-        <option value="search" data-test="algorithm-option">
-          Search
-        </option>
-        <option value="graph" data-test="algorithm-option">
-          Graph
-        </option>
       </select>
     </AlgorithmTypeSelectorContainer>
   );

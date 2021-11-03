@@ -23,12 +23,11 @@ export const Head = styled.div`
 
 export const SubHead = styled.div`
   display: grid;
-  grid-template-columns: auto auto 140px auto auto;
+  grid-template-columns: auto auto minmax(150px, 300px) auto auto;
   column-gap: 40px;
   overflow: hidden;
 
-  background: #1c1c1c;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   font-family: "Share Tech Mono", monospace;
   background: rgb(44, 20, 73);
@@ -81,11 +80,13 @@ export const Button = styled.button`
 export const VisualizeButton = styled(Button)`
   color: pink;
   transition: 0.25s;
-  border: solid 1px red;
+  border: solid 1px #6f6db5;
   font-size: 16px;
+  padding: 16px;
+  height: 40px;
 
   &:hover {
-    border: solid 1px green;
+    border: solid 1px #540363;
     color: #fff;
   }
 
@@ -93,12 +94,12 @@ export const VisualizeButton = styled(Button)`
     animation: pulse 0.5s;
   }
   &:active {
-    background: gold;
+    background: #1cdda3;
   }
 
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 red;
+      box-shadow: 0 0 0 0 #6f6db5;
     }
     50% {
       box-shadow: 0 0 0 1em #ff990000;
@@ -130,8 +131,6 @@ export const Column = styled.div<SortingColumnInterface>`
       border-bottom: solid #540363 1px;
     }
   }
-
-  background: #1c1c1c;
 
   .node {
     animation: colorGradient 10s infinite;

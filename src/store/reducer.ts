@@ -28,6 +28,7 @@ const reducer = (
     case actionTypes.CHANGE_ALGORITHM:
       return {
         ...state,
+        start: action.global.start,
         algorithm: {
           ...state.algorithm,
           type: action.global.algorithm.type,

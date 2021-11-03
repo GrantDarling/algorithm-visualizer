@@ -89,7 +89,7 @@ describe("Header Components", () => {
 
     it("should render the options", () => {
       const component = findByTestAttribute(wrapper, "algorithm-option");
-      expect(component.length).toBe(3);
+      expect(component.length).toBe(1);
     });
   });
 

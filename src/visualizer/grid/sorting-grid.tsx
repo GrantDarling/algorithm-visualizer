@@ -1,7 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { Column, Button } from "../../styles/styles";
 import { buildBars, initiateBarHeights, algorithmSelector } from "./grid-logic";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Dispatch } from "redux";
+import { toggleStart } from "../../store/actionCreators";
 
 interface BarState {
   height: number;
@@ -15,6 +17,7 @@ type SortingGridProps = {
 };
 
 export const SortingGrid = ({ grid }: SortingGridProps) => {
+  const dispatch: Dispatch<any> = useDispatch();
   const global: IGlobal = useSelector((state: GlobalState) => state);
   const [heights, setHeights] = useState<number[]>([]);
   const [bars, setBars] = useState<BarState[]>([]);
@@ -34,7 +37,6 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
   }, [global.start, grid]);
 
   useEffect(() => {
-    console.log(animate);
     if (animate) {
       const animate = () => {
         const algorithm: BarState[] | undefined = algorithmSelector(
@@ -47,6 +49,8 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
           setBars(algorithm);
           setRestart(false);
           animateID.current = requestAnimationFrame(animate);
+        } else if (global.start) {
+          dispatch(toggleStart(global));
         }
       };
       animateID.current = requestAnimationFrame(animate);
@@ -55,10 +59,9 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
     }
 
     return () => {
-      console.log("cance;");
       cancelAnimationFrame(animateID.current);
     };
-  }, [animate, grid, heights, global.algorithm.type, global.start, restart]);
+  }, [animate, grid, heights, restart, global, dispatch]);
 
   return (
     <div id="grid-container">
