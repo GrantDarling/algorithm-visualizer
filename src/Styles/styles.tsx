@@ -23,7 +23,7 @@ export const Head = styled.div`
 
 export const SubHead = styled.div`
   display: grid;
-  grid-template-columns: auto auto minmax(150px, 300px) auto auto;
+  grid-template-columns: 200px 200px minmax(150px, 300px) 200px 200px;
   column-gap: 40px;
   overflow: hidden;
 
