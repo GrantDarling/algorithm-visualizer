@@ -2,6 +2,7 @@ import { shuffle } from "../helpers/helpers";
 import { generateColor } from "../helpers/helpers";
 import { bubbleSort } from "../algorithms/bubbleSort";
 import { selectionSort } from "../algorithms/selectionSort";
+import { heapSort } from "../algorithms/heapSort";
 
 interface Bar {
   height: number;
@@ -55,6 +56,13 @@ export function buildBars(
   heights: number[],
   active: number[]
 ) {
+  let isActive = (idx: any) => {
+    for (const activeIdx of active) {
+      if (heights[idx] === heights[activeIdx]) return true;
+    }
+    return false;
+  };
+
   if (colors.length !== heights.length + 1) colors = buildColors(heights);
   let bars: Bar[] = [];
   grid.map((column_length, idx) => {
@@ -62,11 +70,7 @@ export function buildBars(
       height: heights[idx],
       location: column_length,
       color: colors[heights[idx]],
-      active:
-        heights[idx] === heights[active[0]] ||
-        heights[idx] === heights[active[1]]
-          ? true
-          : false,
+      active: isActive(idx),
     };
     return bars.push(temp_bar);
   });
@@ -85,6 +89,8 @@ export const algorithmSelector = (
       return bubbleSort(grid, heights, restart);
     case "selectionSort":
       return selectionSort(grid, heights, restart);
+    case "heapSort":
+      return heapSort(grid, heights, restart);
     default:
       return undefined;
   }

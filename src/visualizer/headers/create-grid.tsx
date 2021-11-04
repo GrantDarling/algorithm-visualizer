@@ -28,8 +28,8 @@ export const CreateGrid = () => {
         placeholder="Max: 100"
         value={Number(grid)}
         onChange={(e) =>
-          Number(e.target.value) > 30
-            ? setGrid(30)
+          Number(e.target.value) > 70
+            ? setGrid(70)
             : setGrid(Number(e.target.value))
         }
         data-test="create-grid-input"

@@ -73,13 +73,13 @@ export const AlgorithmSelector = () => {
           Selection Sort
         </option>
         <option
-          value="mergeSort"
+          value="heapSort"
           data-test="algorithm-option"
-          data-testid="merge-sort"
+          data-testid="heap-sort"
           data-timecomplexity="O(nlogn)"
-          data-spacecomplexity="O(n)"
+          data-spacecomplexity="O(1)"
         >
-          Merge Sort
+          Heap Sort
         </option>
       </select>
     </AlgorithmSelectorContainer>
