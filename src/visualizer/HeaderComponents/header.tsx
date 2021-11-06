@@ -1,7 +1,7 @@
 import { CreateGrid } from "./create-grid";
 import { Complexity } from "./complexity";
 import { AlgorithmTypeSelector } from "./algorithm-type-selector";
-import { AlgorithmSelector } from "./algorithm-selector";
+import { AlgorithmSelector } from "./AlgorithmSelector/selector-presentation";
 import { Head, SubHead, VisualizeButton } from "../../styles/styles";
 import { Tours } from "./tours";
 

@@ -1,5 +1,5 @@
 import { Visualizer } from "../styles/styles";
-import { Header } from "./headers/header";
+import { Header } from "./HeaderComponents/header";
 import { Grid } from "./grid/grid";
 
 export const AlgorithmnVisualizer = () => {
