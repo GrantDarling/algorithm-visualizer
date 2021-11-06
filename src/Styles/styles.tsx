@@ -23,7 +23,9 @@ export const Head = styled.div`
 
 export const SubHead = styled.div`
   display: grid;
-  grid-template-columns: 200px 200px minmax(150px, 300px) 200px 200px;
+  grid-template-columns:
+    minmax(100px, 200px) minmax(100px, 200px) minmax(150px, 300px)
+    minmax(100px, 200px) minmax(100px, 200px);
   column-gap: 40px;
   overflow: hidden;
 
@@ -40,6 +42,11 @@ export const SubHead = styled.div`
   color: white;
   height: 100px;
   width: 100%;
+
+  input,
+  select {
+    width: 100%;
+  }
 `;
 
 export const CreateGridContainer = styled.div`
@@ -78,7 +85,7 @@ export const Button = styled.button`
 `;
 
 export const VisualizeButton = styled(Button)`
-  color: pink;
+  color: white;
   transition: 0.25s;
   border: solid 1px #6f6db5;
   font-size: 16px;

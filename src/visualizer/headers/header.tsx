@@ -3,6 +3,7 @@ import { Complexity } from "./complexity";
 import { AlgorithmTypeSelector } from "./algorithm-type-selector";
 import { AlgorithmSelector } from "./algorithm-selector";
 import { Head, SubHead, VisualizeButton } from "../../styles/styles";
+import { Tours } from "./tours";
 
 import { Dispatch } from "redux";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +15,10 @@ export const Header = () => {
 
   return (
     <>
-      <Head>Algorithm Visualizer</Head>
+      <Head>
+        Algorithm Visualizer
+        <Tours />
+      </Head>
       <SubHead>
         <AlgorithmTypeSelector />
         <AlgorithmSelector />

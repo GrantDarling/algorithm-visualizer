@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Column, Button } from "../../styles/styles";
+import { Column } from "../../styles/styles";
 import { buildBars, initiateBarHeights, algorithmSelector } from "./grid-logic";
 import { useSelector, useDispatch } from "react-redux";
 import { Dispatch } from "redux";
@@ -73,7 +73,6 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
             height={props.height}
             color={props.color}
           >
-            <Button />
             {props.location.map((_, idx) => (
               <div key={idx} className="node"></div>
             ))}
