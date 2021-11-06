@@ -1,26 +1,32 @@
 import * as helpers from "./helpers";
 
 describe("shuffle tests:", () => {
-  test("maintain array length", () => {
+  it("maintains the array length", () => {
     const array = [1, 2, 3, 4, 5, 6];
     const shuffledArray = helpers.shuffle(array);
     expect(shuffledArray.length).toBe(6);
   });
 
-  test("array contains the same elements", () => {
+  it("contains the same amount of elements", () => {
     const array = [1, 2, 3, 4, 5, 6];
     const shuffledArray = helpers.shuffle(array);
     expect(array).toEqual(expect.arrayContaining(shuffledArray));
   });
+
+  it("is not the same array values after shuffled", () => {
+    const array = [1, 2, 3, 4, 5, 6];
+    const shuffledArray = helpers.shuffle(Array.from(array));
+    expect(array).not.toEqual(shuffledArray);
+  });
 });
 
-describe("generateColor tests:", () => {
+describe("generateColorGradientArray tests:", () => {
   const colorStart = "#ff3825";
   const colorEnd = "#f4e57c";
   const colorsLength = 10;
 
-  test("returns an array of the correct size", () => {
-    const colorsArray = helpers.generateColor(
+  it("returns an array of the correct size", () => {
+    const colorsArray = helpers.generateColorGradientArray(
       colorStart,
       colorEnd,
       colorsLength
@@ -28,8 +34,8 @@ describe("generateColor tests:", () => {
     expect(colorsArray.length).toBe(colorsLength);
   });
 
-  test("first element is correct color", () => {
-    const colorsArray = helpers.generateColor(
+  it("has the correct first element", () => {
+    const colorsArray = helpers.generateColorGradientArray(
       colorStart,
       colorEnd,
       colorsLength
@@ -37,8 +43,8 @@ describe("generateColor tests:", () => {
     expect(colorsArray[0]).toBe(colorEnd);
   });
 
-  test("last element is correct color", () => {
-    const colorsArray = helpers.generateColor(
+  it("has the correct last element", () => {
+    const colorsArray = helpers.generateColorGradientArray(
       colorStart,
       colorEnd,
       colorsLength

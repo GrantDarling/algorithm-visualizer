@@ -15,7 +15,7 @@ export function shuffle(array: number[]) {
   return array;
 }
 
-export function generateColor(
+export function generateColorGradientArray(
   colorStart: string,
   colorEnd: string,
   colorCount: number

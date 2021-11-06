@@ -1,5 +1,5 @@
 import { shuffle } from "../helpers/helpers";
-import { generateColor } from "../helpers/helpers";
+import { generateColorGradientArray } from "../helpers/helpers";
 import { bubbleSort } from "../algorithms/bubbleSort";
 import { selectionSort } from "../algorithms/selectionSort";
 import { heapSort } from "../algorithms/heapSort";
@@ -46,7 +46,7 @@ function buildColors(heights: number[]) {
   const colorStart = "#ff3825";
   const colorEnd = "#f4e57c";
   const colorsLength = heights.length + 1;
-  return generateColor(colorStart, colorEnd, colorsLength);
+  return generateColorGradientArray(colorStart, colorEnd, colorsLength);
 }
 
 let colors: string[] = [];
