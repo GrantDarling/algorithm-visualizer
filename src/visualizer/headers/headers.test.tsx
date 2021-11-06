@@ -59,10 +59,10 @@ describe("Header Components", () => {
       expect(option.props().value).toBe("selectionSort");
     });
 
-    it("should set the correct merge sort selected state", () => {
-      const option = wrapper.find('option[data-testid="merge-sort"]');
+    it("should set the correct heap sort selected state", () => {
+      const option = wrapper.find('option[data-testid="heap-sort"]');
       option.simulate("click");
-      expect(option.props().value).toBe("mergeSort");
+      expect(option.props().value).toBe("heapSort");
     });
   });
 
