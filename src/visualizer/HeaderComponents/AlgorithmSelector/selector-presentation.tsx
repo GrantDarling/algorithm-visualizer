@@ -22,7 +22,7 @@ export const AlgorithmSelector = () => {
           return (
             <option
               value={option.value}
-              data-test={option.test}
+              data-test="algorithm-option"
               data-testid={option.id}
               data-timecomplexity={option.complexity.time}
               data-spacecomplexity={option.complexity.space}

@@ -31,7 +31,6 @@ const useSelectorImplementation = () => {
       id: "bubble-sort",
       algorithm: "Bubble Sort",
       value: "bubbleSort",
-      test: "algorithm-option",
       complexity: {
         time: "O(n²)",
         space: "O(1)",
@@ -41,7 +40,6 @@ const useSelectorImplementation = () => {
       id: "selection-sort",
       algorithm: "Selection Sort",
       value: "selectionSort",
-      test: "algorithm-option",
       complexity: {
         time: "O(n²)",
         space: "O(1)",
@@ -51,7 +49,6 @@ const useSelectorImplementation = () => {
       id: "heap-sort",
       algorithm: "Heap Sort",
       value: "heapSort",
-      test: "algorithm-option",
       complexity: {
         time: "O(nlogn)",
         space: "O(1)",
