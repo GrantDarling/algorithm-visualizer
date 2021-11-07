@@ -26,6 +26,39 @@ const useSelectorImplementation = () => {
     });
   }
 
+  const options = [
+    {
+      id: "bubble-sort",
+      algorithm: "Bubble Sort",
+      value: "bubbleSort",
+      test: "algorithm-option",
+      complexity: {
+        time: "O(n²)",
+        space: "O(1)",
+      },
+    },
+    {
+      id: "selection-sort",
+      algorithm: "Selection Sort",
+      value: "selectionSort",
+      test: "algorithm-option",
+      complexity: {
+        time: "O(n²)",
+        space: "O(1)",
+      },
+    },
+    {
+      id: "heap-sort",
+      algorithm: "Heap Sort",
+      value: "heapSort",
+      test: "algorithm-option",
+      complexity: {
+        time: "O(nlogn)",
+        space: "O(1)",
+      },
+    },
+  ];
+
   useEffect(() => {
     dispatch(
       changeAlgorithm({
@@ -38,7 +71,8 @@ const useSelectorImplementation = () => {
       })
     );
   }, [dispatch, algorithm, global]);
-  return { algorithm, handleSelectChange };
+
+  return { algorithm, handleSelectChange, options };
 };
 
 export default useSelectorImplementation;

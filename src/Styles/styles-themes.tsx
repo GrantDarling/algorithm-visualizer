@@ -5,6 +5,6 @@ export const lightTheme: DefaultTheme = {
   color: "red",
 };
 export const darkTheme: DefaultTheme = {
-  background: "red",
+  background: "darkblue",
   color: "red",
 };
