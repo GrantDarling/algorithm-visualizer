@@ -50,6 +50,16 @@ export const GlobalStyles = createGlobalStyle<{ theme: DefaultTheme }>`
 		font-size: 12px;
 	}
 
+	#grid-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
+		border-top: solid 1px ${({ theme }) => theme.core_accent};;
+	}
+
+	#grid-container > .column {
+		display: grid;
+	}
+
 	body {
 		font-family: ${(props) => props.theme.font_family}
 	}
@@ -143,6 +153,14 @@ svg.shepherd-modal-is-visible.shepherd-modal-overlay-container {
 }
 
 
+// Media Queries
+
+@media only screen and (max-width: 550px) {
+  .button.dark  {
+    display: none;
+  }
+}
+
 // Keyframes
   @keyframes pulse {
     0% {
@@ -207,6 +225,14 @@ export const SubHeadGlobal = styled.div<{ theme: DefaultTheme }>`
   color: #dbe5f3;
   overflow-y: scroll;
 
+  @media only screen and (max-width: 550px) {
+    ${DisplayGrid({
+      justifyContent: "space-between",
+      alignItems: "center",
+      columnGap: "10px",
+    })};
+  }
+
   input,
   select {
     width: 94%;
@@ -222,14 +248,14 @@ export const Button = styled.button<{ theme: DefaultTheme }>`
 export const VisualizeButtonGlobal = styled(Button)<{ theme: DefaultTheme }>`
   color: #dbe5f3;
   transition: 0.25s;
-  border: solid 3px ${({ theme }) => theme.core_accent};
+  border: solid 2px ${({ theme }) => theme.core_accent};
 	font-family: ${(props) => props.theme.font_family}
   font-size: 16px;
-  padding: 16px;
-  height: 40px;
+  padding: 18px;
+  height: 50px;
 
   &:hover {
-    border: solid 3px ${({ theme }) => theme.core_light};
+    border: solid 2px ${({ theme }) => theme.core_light};
     color: #fff;
   }
 
@@ -241,6 +267,11 @@ export const VisualizeButtonGlobal = styled(Button)<{ theme: DefaultTheme }>`
   }
 
   padding: 8px 30px;
+
+	  @media only screen and (max-width: 550px) {
+			font-size: 14px;
+			padding: 4px 30px;
+  }
 `;
 
 export const InfoBox = styled.div<{ theme: DefaultTheme }>`
@@ -257,7 +288,7 @@ export const ToursGlobal = styled(ShepherdTour)<{ theme: DefaultTheme }>``;
 
 export const Visualizer = styled.div`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: grid;
   grid-template-rows: auto auto 1fr;
 `;
