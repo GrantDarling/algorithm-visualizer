@@ -64,13 +64,6 @@ export const ComplexityContainer = styled.div`
   font-size: 16px;
 `;
 
-export const AlgorithmTypeSelectorContainer = styled.div`
-  background: black;
-  display: grid;
-  grid-template-columns: 1fr;
-  padding: 16px;
-`;
-
 export const AlgorithmSelectorContainer = styled.div`
   background: black;
   display: grid;

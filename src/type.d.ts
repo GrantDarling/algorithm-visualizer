@@ -31,12 +31,12 @@ declare type AlgorithmAction = {
 interface ITheme {
   background: string;
   color: string;
+  infoBox: {
+    background: string;
+  };
 }
 
-interface ThemeState {
-  background: string;
-  color: string;
-}
+interface ThemeState extends ITheme {}
 
 declare type ThemeAction = {
   type: string;

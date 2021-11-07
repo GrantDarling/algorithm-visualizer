@@ -1,4 +1,4 @@
-import { AlgorithmTypeSelectorContainer } from "../../styles/styles";
+import { AlgorithmTypeSelectorContainer } from "./type-selector-styles";
 
 export const AlgorithmTypeSelector = () => {
   return (
