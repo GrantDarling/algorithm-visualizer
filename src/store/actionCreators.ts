@@ -1,6 +1,5 @@
 import * as actionTypes from "./actionTypes";
 
-/* Global State */
 export function toggleStart(global: IGlobal) {
   const action: GlobalAction = {
     type: actionTypes.TOGGLE_START,
@@ -17,14 +16,6 @@ export function setGridSize(global: IGlobal, gridSize: number) {
   return dispatchGlobal(action);
 }
 
-export function changeAlgorithm(global: IGlobal) {
-  const action: GlobalAction = {
-    type: actionTypes.CHANGE_ALGORITHM,
-    global,
-  };
-  return dispatchGlobal(action);
-}
-
 export function changeTheme(global: IGlobal) {
   const action: GlobalAction = {
     type: actionTypes.CHANGE_THEME,
@@ -33,9 +24,9 @@ export function changeTheme(global: IGlobal) {
   return dispatchGlobal(action);
 }
 
-export function setAlgorithm(global: IGlobal) {
+export function changeAlgorithm(global: IGlobal) {
   const action: GlobalAction = {
-    type: actionTypes.GRID_SIZE,
+    type: actionTypes.CHANGE_ALGORITHM,
     global,
   };
   return dispatchGlobal(action);

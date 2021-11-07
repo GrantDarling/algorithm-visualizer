@@ -1,6 +1,6 @@
 import { DefaultTheme } from "styled-components";
 
-export const darkTheme: DefaultTheme = {
+export const main: DefaultTheme = {
   background: "darkblue",
   color: "red",
   fontFamily: "'Share Tech Mono', monospace;",

@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import { darkTheme } from "../styles/styles-themes";
+import { main } from "../styles/styles-themes";
 
 const initialState: GlobalState = {
   start: false,
@@ -9,7 +9,7 @@ const initialState: GlobalState = {
     timeComplexity: "O(n²)",
     spaceComplexity: "O(1)",
   },
-  theme: darkTheme,
+  theme: main,
 };
 
 const reducer = (
@@ -42,8 +42,9 @@ const reducer = (
         ...state,
         theme: action.global.theme,
       };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default reducer;
