@@ -1,8 +1,9 @@
 import { Visualizer } from "../styles/styles";
+
 import { Header } from "./HeaderComponents/header";
 import { Grid } from "./grid/grid";
 
-export const AlgorithmnVisualizer = () => {
+const AlgorithmnVisualizer = () => {
   return (
     <Visualizer>
       <Header />
@@ -10,3 +11,5 @@ export const AlgorithmnVisualizer = () => {
     </Visualizer>
   );
 };
+
+export default AlgorithmnVisualizer;

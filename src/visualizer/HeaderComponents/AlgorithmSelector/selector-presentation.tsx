@@ -1,4 +1,4 @@
-import { AlgorithmSelectorContainer } from "../../../styles/styles";
+import { AlgorithmSelectorContainer } from "./selector-styles";
 import useSelectorImplementation from "./selector-implementation";
 
 export const AlgorithmSelector = () => {
