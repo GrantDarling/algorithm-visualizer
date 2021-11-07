@@ -1,8 +1,8 @@
-import { shuffle } from "../Helpers/helpers";
-import { generateColorGradientArray } from "../Helpers/helpers";
-import { bubbleSort } from "../algorithms/bubbleSort";
-import { selectionSort } from "../algorithms/selectionSort";
-import { heapSort } from "../algorithms/heapSort";
+import { shuffle } from "../../Helpers/helpers";
+import { generateColorGradientArray } from "../../Helpers/helpers";
+import { bubbleSort } from "../../algorithms/bubbleSort";
+import { selectionSort } from "../../algorithms/selectionSort";
+import { heapSort } from "../../algorithms/heapSort";
 
 interface Bar {
   height: number;

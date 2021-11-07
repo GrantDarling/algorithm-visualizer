@@ -1,9 +1,12 @@
 import { useEffect, useState, useRef } from "react";
-import { Column } from "../../styles/styles";
-import { buildBars, initiateBarHeights, algorithmSelector } from "./grid-logic";
+import {
+  buildBars,
+  initiateBarHeights,
+  algorithmSelector,
+} from "./grid-sorting-business";
 import { useSelector, useDispatch } from "react-redux";
 import { Dispatch } from "redux";
-import { toggleStart } from "../../store/actionCreators";
+import { toggleStart } from "../../../store/actionCreators";
 
 interface BarState {
   height: number;
@@ -16,7 +19,7 @@ type SortingGridProps = {
   grid: number[][];
 };
 
-export const SortingGrid = ({ grid }: SortingGridProps) => {
+export const useSortingGrid = ({ grid }: SortingGridProps) => {
   const dispatch: Dispatch<any> = useDispatch();
   const global: IGlobal = useSelector((state: GlobalState) => state);
   const [heights, setHeights] = useState<number[]>([]);
@@ -63,22 +66,5 @@ export const SortingGrid = ({ grid }: SortingGridProps) => {
     };
   }, [animate, grid, heights, restart, global, dispatch]);
 
-  return (
-    <div id="grid-container">
-      {bars.map((props, idx) => {
-        return (
-          <Column
-            key={idx}
-            className={props.active ? "active column" : "column"}
-            height={props.height}
-            color={props.color}
-          >
-            {props.location.map((_, idx) => (
-              <div key={idx} className="node"></div>
-            ))}
-          </Column>
-        );
-      })}
-    </div>
-  );
+  return { bars, grid };
 };

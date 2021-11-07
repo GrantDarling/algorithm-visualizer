@@ -1,4 +1,4 @@
-import * as Grid from "./grid-logic";
+import * as Grid from "./grid-sorting-business";
 
 describe("initiateBarHeights tests:", () => {
   test("barMaxHeight empty = undefined", () => {

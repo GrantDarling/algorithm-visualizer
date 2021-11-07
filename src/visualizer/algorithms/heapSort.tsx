@@ -1,4 +1,4 @@
-import { buildBars } from "../GridComponents/grid-logic";
+import { buildBars } from "../GridComponents/GridSorting/grid-sorting-business";
 
 let isInitialized = false;
 let arrayLength: number;
