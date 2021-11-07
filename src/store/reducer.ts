@@ -1,13 +1,15 @@
 import * as actionTypes from "./actionTypes";
+import { darkTheme } from "../styles/styles-themes";
 
 const initialState: GlobalState = {
   start: false,
-  gridSize: 10,
+  gridSize: 20,
   algorithm: {
     type: "bubbleSort",
     timeComplexity: "O(n²)",
     spaceComplexity: "O(1)",
   },
+  theme: darkTheme,
 };
 
 const reducer = (
@@ -30,11 +32,15 @@ const reducer = (
         ...state,
         start: action.global.start,
         algorithm: {
-          ...state.algorithm,
           type: action.global.algorithm.type,
           timeComplexity: action.global.algorithm.timeComplexity,
           spaceComplexity: action.global.algorithm.spaceComplexity,
         },
+      };
+    case actionTypes.CHANGE_THEME:
+      return {
+        ...state,
+        theme: action.global.theme,
       };
   }
   return state;
