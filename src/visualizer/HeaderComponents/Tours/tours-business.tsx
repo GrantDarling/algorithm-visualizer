@@ -1,8 +1,6 @@
-import { useContext } from "react";
-import { ShepherdTour, ShepherdTourContext } from "react-shepherd";
-
-const tourOptions = {
+export const tourOptions = {
   defaultStepOptions: {
+    classes: "shepherd-theme-custom",
     cancelIcon: {
       enabled: true,
       label: "×",
@@ -11,21 +9,10 @@ const tourOptions = {
   useModalOverlay: true,
 };
 
-function Button() {
-  const tour: any = useContext(ShepherdTourContext);
-
-  return (
-    <button className="button dark" onClick={tour.start}>
-      Take The Tour!
-    </button>
-  );
-}
-
-const steps: any = [
+export const steps: any = [
   {
     id: "intro",
     arrow: false,
-    attachTo: { element: ".first-element", on: "bottom" },
     buttons: [
       {
         classes: "shepherd-button-primary",
@@ -56,7 +43,7 @@ const steps: any = [
   },
   {
     id: "algorithm-type",
-    attachTo: { element: ".fStzJL", on: "bottom" },
+    attachTo: { element: "#type-selector", on: "bottom" },
     beforeShowPromise: function () {
       return new Promise<void>(function (resolve) {
         setTimeout(function () {
@@ -98,7 +85,7 @@ const steps: any = [
   },
   {
     id: "algorithm-selector",
-    attachTo: { element: ".kWtcMl", on: "bottom" },
+    attachTo: { element: "#selector", on: "bottom" },
     beforeShowPromise: function () {
       return new Promise<void>(function (resolve) {
         setTimeout(function () {
@@ -138,7 +125,7 @@ const steps: any = [
   },
   {
     id: "array size",
-    attachTo: { element: ".VkvmM", on: "bottom" },
+    attachTo: { element: "#create-grid", on: "bottom" },
     beforeShowPromise: function () {
       return new Promise<void>(function (resolve) {
         setTimeout(function () {
@@ -180,7 +167,7 @@ const steps: any = [
   },
   {
     id: "complexity",
-    attachTo: { element: ".rgmXX", on: "bottom" },
+    attachTo: { element: "#complexity", on: "bottom" },
     beforeShowPromise: function () {
       return new Promise<void>(function (resolve) {
         setTimeout(function () {
@@ -222,7 +209,7 @@ const steps: any = [
   },
   {
     id: "visualize",
-    attachTo: { element: ".hAcwKo", on: "bottom" },
+    attachTo: { element: ".sc-jRQBWg", on: "bottom" },
     beforeShowPromise: function () {
       return new Promise<void>(function (resolve) {
         setTimeout(function () {
@@ -261,13 +248,3 @@ const steps: any = [
     },
   },
 ];
-
-export const Tours = () => {
-  return (
-    <>
-      <ShepherdTour steps={steps} tourOptions={tourOptions}>
-        <Button />
-      </ShepherdTour>
-    </>
-  );
-};

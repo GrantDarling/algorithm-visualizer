@@ -3,7 +3,7 @@ import { Complexity } from "../Complexity/complexity-presentational";
 import { AlgorithmTypeSelector } from "../AlgorithmTypeSelector/type-selector-presentation";
 import { AlgorithmSelector } from "../AlgorithmSelector/selector-presentation";
 import { Head, SubHead, VisualizeButton } from "./header-styles";
-import { Tours } from "../tours";
+import { Tours } from "../Tours/tours-presentational";
 
 import useHeaderImplementation from "./header-implementation";
 

@@ -4,7 +4,7 @@ import useCreateGridImplementation from "./create-grid-implementation";
 export const CreateGrid = () => {
   const { handleInputChange, grid, limit } = useCreateGridImplementation();
   return (
-    <CreateGridContainer data-test="create-grid">
+    <CreateGridContainer id="create-grid" data-test="create-grid">
       <label htmlFor="grid-size" data-test="create-grid-label">
         Array_Size
       </label>

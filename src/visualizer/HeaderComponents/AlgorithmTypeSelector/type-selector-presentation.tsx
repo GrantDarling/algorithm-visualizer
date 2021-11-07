@@ -2,7 +2,10 @@ import { AlgorithmTypeSelectorContainer } from "./type-selector-styles";
 
 export const AlgorithmTypeSelector = () => {
   return (
-    <AlgorithmTypeSelectorContainer data-test="algorithm-type-selector">
+    <AlgorithmTypeSelectorContainer
+      id="type-selector"
+      data-test="algorithm-type-selector"
+    >
       <label htmlFor="algorithm-type" data-test="algorithm-label">
         Algorithm Type
       </label>

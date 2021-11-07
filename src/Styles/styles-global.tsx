@@ -4,6 +4,8 @@ import styled, {
   css,
 } from "styled-components";
 
+import { ShepherdTour } from "react-shepherd";
+
 // Mixins
 interface DisplayGridProps {
   justifyContent?: string;
@@ -122,3 +124,5 @@ export const InfoBox = styled.div<{ theme: DefaultTheme }>`
   background: ${({ theme }) => theme.infoBox.background};
   padding: 16px;
 `;
+
+export const ToursGlobal = styled(ShepherdTour)<{ theme: DefaultTheme }>``;

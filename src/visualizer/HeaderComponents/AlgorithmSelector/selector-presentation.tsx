@@ -6,7 +6,7 @@ export const AlgorithmSelector = () => {
     useSelectorImplementation();
 
   return (
-    <AlgorithmSelectorContainer data-test="algorithm-selector">
+    <AlgorithmSelectorContainer id="selector" data-test="algorithm-selector">
       <label htmlFor="algorithm" data-test="algorithm-label">
         Algorithms
       </label>
@@ -21,6 +21,7 @@ export const AlgorithmSelector = () => {
         {options.map((option) => {
           return (
             <option
+              key={option.id}
               value={option.value}
               data-test="algorithm-option"
               data-testid={option.id}
