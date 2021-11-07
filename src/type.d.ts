@@ -29,15 +29,13 @@ declare type AlgorithmAction = {
 };
 
 interface ITheme {
-  background: string;
-  color: string;
-  fontFamily: string;
-  infoBox: {
-    background: string;
-  };
-  button: {
-    color: string;
-  };
+  core_main: string;
+  core_deep: string;
+  core_light: string;
+  core_accent: string;
+  core_sort_start: string;
+  core_sort_end: string;
+  font_family: string;
 }
 
 interface ThemeState extends ITheme {}

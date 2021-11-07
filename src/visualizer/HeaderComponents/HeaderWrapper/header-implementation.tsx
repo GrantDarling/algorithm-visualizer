@@ -10,7 +10,7 @@ const useHeaderImplementation = () => {
   const [visualizerText, setVisualizerText] = useState("visualize");
 
   useEffect(
-    () => setVisualizerText(start === false ? "visualize" : "stop"),
+    () => setVisualizerText(start === false ? "visualize" : "end visualize"),
     [start]
   );
   return { visualizerText, setStart, start };

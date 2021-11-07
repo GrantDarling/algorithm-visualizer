@@ -19,6 +19,7 @@ export const Header = () => {
         <AlgorithmTypeSelector data-test="algorithm-type-selector" />
         <AlgorithmSelector data-test="algorithm-selector" />
         <VisualizeButton
+          id="visualization-button"
           data-test="visualizer-button"
           onClick={() => setStart(start)}
         >

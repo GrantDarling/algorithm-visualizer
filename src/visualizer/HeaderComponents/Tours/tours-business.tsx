@@ -209,7 +209,7 @@ export const steps: any = [
   },
   {
     id: "visualize",
-    attachTo: { element: ".sc-jRQBWg", on: "bottom" },
+    attachTo: { element: "#visualization-button", on: "bottom" },
     beforeShowPromise: function () {
       return new Promise<void>(function (resolve) {
         setTimeout(function () {

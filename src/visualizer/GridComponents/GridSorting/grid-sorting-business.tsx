@@ -27,7 +27,7 @@ export function initiateBarHeights(grid: number[][]) {
 
 function buildColors(heights: number[]) {
   const colorStart = "#ff3825";
-  const colorEnd = "#f4e57c";
+  const colorEnd = "#fbfccc";
   const colorsLength = heights.length + 1;
   return generateColorGradientArray(colorStart, colorEnd, colorsLength);
 }
