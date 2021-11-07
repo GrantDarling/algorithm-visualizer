@@ -49,13 +49,6 @@ export const SubHead = styled.div`
   }
 `;
 
-export const CreateGridContainer = styled.div`
-  background: black;
-  display: grid;
-  grid-template-columns: 1fr;
-  padding: 16px;
-`;
-
 export const ComplexityContainer = styled.div`
   background: black;
   display: grid;

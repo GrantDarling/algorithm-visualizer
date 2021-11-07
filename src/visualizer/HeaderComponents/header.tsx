@@ -1,4 +1,4 @@
-import { CreateGrid } from "./create-grid";
+import { CreateGrid } from "./CreateGrid/create-grid-presentational";
 import { Complexity } from "./Complexity/complexity-presentational";
 import { AlgorithmTypeSelector } from "./AlgorithmTypeSelector/type-selector-presentation";
 import { AlgorithmSelector } from "./AlgorithmSelector/selector-presentation";

@@ -44,3 +44,8 @@ declare type ThemeAction = {
 };
 
 type DispatchGlobalType = (args: GlobalAction) => GlobalAction;
+
+// Type Declarations
+type HTMLElementEvent<T extends HTMLElement> = Event & {
+  target: T;
+};
