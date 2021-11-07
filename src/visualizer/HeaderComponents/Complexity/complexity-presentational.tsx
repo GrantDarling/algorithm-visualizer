@@ -1,9 +1,8 @@
-import { ComplexityContainer } from "../../styles/styles";
+import { ComplexityContainer } from "./complexity-styles";
 import { useSelector } from "react-redux";
 
 export const Complexity = () => {
   const globalState = useSelector((state: GlobalState) => state);
-
   return (
     <ComplexityContainer data-test="algorithm-complexity">
       <span data-test="algorithm-time-complexity">
