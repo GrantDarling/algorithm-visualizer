@@ -31,8 +31,12 @@ declare type AlgorithmAction = {
 interface ITheme {
   background: string;
   color: string;
+  fontFamily: string;
   infoBox: {
     background: string;
+  };
+  button: {
+    color: string;
   };
 }
 

@@ -1,6 +1,6 @@
 import { Visualizer } from "../styles/styles";
 
-import { Header } from "./HeaderComponents/header";
+import { Header } from "./HeaderComponents/HeaderWrapper/header-presentational";
 import { Grid } from "./grid/grid";
 
 const AlgorithmnVisualizer = () => {
