@@ -1,9 +1,8 @@
-import { SortingGrid } from "./sorting-grid";
-import { createGrid } from "./grid-logic";
+import { createGrid } from "./grid-business";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-export const Grid = () => {
+export const useGrid = () => {
   const global: IGlobal = useSelector((state: GlobalState) => state);
   const [grid, setGrid] = useState<number[][]>([]);
 
@@ -12,5 +11,5 @@ export const Grid = () => {
     [global.gridSize]
   );
 
-  return <SortingGrid grid={grid} />;
+  return { grid };
 };

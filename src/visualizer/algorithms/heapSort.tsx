@@ -1,4 +1,4 @@
-import { buildBars } from "../grid/grid-logic";
+import { buildBars } from "../GridComponents/grid-logic";
 
 let isInitialized = false;
 let arrayLength: number;
