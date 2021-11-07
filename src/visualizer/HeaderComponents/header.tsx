@@ -1,5 +1,5 @@
 import { CreateGrid } from "./create-grid";
-import { Complexity } from "./complexity";
+import { Complexity } from "./Complexity/complexity-presentational";
 import { AlgorithmTypeSelector } from "./AlgorithmTypeSelector/type-selector-presentation";
 import { AlgorithmSelector } from "./AlgorithmSelector/selector-presentation";
 import { Head, SubHead, VisualizeButton } from "../../styles/styles";
