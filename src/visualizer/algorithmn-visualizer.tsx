@@ -2,7 +2,7 @@ import { Visualizer } from "../style/styles-global";
 
 import { Header } from "./header-components/header-wrapper/header-presentational";
 import { Grid } from "./grid-components/grid/grid-presentational";
-import { Contact } from "./contact";
+import { Contact } from "./contact-info";
 
 const AlgorithmnVisualizer = () => {
   return (
