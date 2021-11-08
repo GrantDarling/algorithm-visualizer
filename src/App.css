@@ -2,4 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 /* Switch to styled components! */
 
-/* Shepard.js */
+.contact {
+  text-align: right;
+  height: 30px;
+  display: grid;
+  align-items: center;
+  padding-right: 20px;
+  color: wheat;
+}
