@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import { main } from "../styles/styles-themes";
+import { main } from "../style/styles-themes";
 
 const initialState: GlobalState = {
   start: false,

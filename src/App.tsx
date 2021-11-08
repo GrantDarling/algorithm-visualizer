@@ -1,6 +1,6 @@
 import "./App.css";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./styles/styles-global";
+import { GlobalStyles } from "./style/styles-global";
 import { useSelector } from "react-redux";
 import AlgorithmnVisualizer from "./visualizer/algorithmn-visualizer";
 

@@ -1,4 +1,4 @@
 import styled from "styled-components";
-import { ToursGlobal } from "../../../styles/styles-global";
+import { ToursGlobal } from "../../../style/styles-global";
 
 export const ToursContainer = styled(ToursGlobal)``;

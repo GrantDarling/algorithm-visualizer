@@ -3,7 +3,7 @@ import {
   HeadGlobal,
   SubHeadGlobal,
   VisualizeButtonGlobal,
-} from "../../../styles/styles-global";
+} from "../../../style/styles-global";
 
 export const Head = styled(HeadGlobal)``;
 

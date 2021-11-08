@@ -1,4 +1,4 @@
-import { Visualizer } from "../styles/styles-global";
+import { Visualizer } from "../style/styles-global";
 
 import { Header } from "./header-components/header-wrapper/header-presentational";
 import { Grid } from "./grid-components/grid/grid-presentational";

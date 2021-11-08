@@ -1,4 +1,4 @@
-import { Column } from "../../../styles/styles-global";
+import { Column } from "../../../style/styles-global";
 import { useSortingGrid } from "./grid-sorting-implementation";
 
 type SortingGridProps = {
