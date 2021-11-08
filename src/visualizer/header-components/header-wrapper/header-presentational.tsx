@@ -1,9 +1,9 @@
-import { CreateGrid } from "../CreateGrid/create-grid-presentational";
-import { Complexity } from "../Complexity/complexity-presentational";
-import { AlgorithmTypeSelector } from "../AlgorithmTypeSelector/type-selector-presentation";
-import { AlgorithmSelector } from "../AlgorithmSelector/selector-presentation";
+import { CreateGrid } from "../create-grid/create-grid-presentational";
+import { Complexity } from "../complexity/complexity-presentational";
+import { AlgorithmTypeSelector } from "../algorithm-type-selector/type-selector-presentation";
+import { AlgorithmSelector } from "../algorithm-selector/selector-presentation";
 import { Head, SubHead, VisualizeButton } from "./header-styles";
-import { Tours } from "../Tours/tours-presentational";
+import { Tours } from "../tours/tours-presentational";
 
 import useHeaderImplementation from "./header-implementation";
 

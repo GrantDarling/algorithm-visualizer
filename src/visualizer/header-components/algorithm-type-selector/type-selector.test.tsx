@@ -1,7 +1,7 @@
 import { shallow, configure } from "enzyme";
 import EnzymeAdapter from "@wojtekmaj/enzyme-adapter-react-17";
 
-import { findByTestAttribute } from "../../Helpers/helpers";
+import { findByTestAttribute } from "../../helpers/helpers";
 import { AlgorithmTypeSelector } from "./type-selector-presentation";
 
 configure({ adapter: new EnzymeAdapter() });

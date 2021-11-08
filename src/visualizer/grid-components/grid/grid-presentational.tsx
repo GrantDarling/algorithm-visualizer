@@ -1,4 +1,4 @@
-import { SortingGrid } from "../GridSorting/grid-sorting-presentation";
+import { SortingGrid } from "../grid-sorting/grid-sorting-presentation";
 import { useGrid } from "./grid-implementation";
 
 export const Grid = () => {

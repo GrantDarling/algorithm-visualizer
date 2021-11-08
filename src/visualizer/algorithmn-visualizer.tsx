@@ -1,8 +1,8 @@
 import { Visualizer } from "../styles/styles-global";
 
-import { Header } from "./HeaderComponents/HeaderWrapper/header-presentational";
-import { Grid } from "./GridComponents/Grid/grid-presentational";
-import { Contact } from "./Contact";
+import { Header } from "./header-components/header-wrapper/header-presentational";
+import { Grid } from "./grid-components/grid/grid-presentational";
+import { Contact } from "./contact";
 
 const AlgorithmnVisualizer = () => {
   return (

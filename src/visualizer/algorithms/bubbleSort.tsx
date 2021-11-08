@@ -1,4 +1,4 @@
-import { buildBars } from "../GridComponents/GridSorting/grid-sorting-business";
+import { buildBars } from "../grid-components/grid-sorting/grid-sorting-business";
 
 let isInitialized: boolean = false;
 let victoryLap: number;
