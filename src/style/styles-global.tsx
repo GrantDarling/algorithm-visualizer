@@ -23,7 +23,7 @@ interface ColumnSubHeadProps {
   visualizer: string;
 }
 
-const DisplayGrid = ({
+const DisplayGrid: any = ({
   justifyContent,
   alignItems,
   columnGap,
@@ -34,12 +34,12 @@ const DisplayGrid = ({
   column-gap: ${columnGap};
 `;
 
-const Box = ({ height, width }: BoxProps) => css`
+const Box: any = ({ height, width }: BoxProps) => css`
   height: ${height};
   width: ${width};
 `;
 
-export const GlobalStyles = createGlobalStyle<{ theme: DefaultTheme }>`
+export const GlobalStyles: any = createGlobalStyle<{ theme: DefaultTheme }>`
 	html,
 	body,
 	#root,
@@ -198,19 +198,22 @@ svg.shepherd-modal-is-visible.shepherd-modal-overlay-container {
 
 /* Headers */
 
-export const HeadGlobal = styled.div<{ theme: DefaultTheme }>`
+export const HeadGlobal: any = styled.div<{ theme: DefaultTheme }>`
   ${DisplayGrid({ justifyContent: "center", alignItems: "center" })};
   ${Box({ height: "50px", width: "100%" })};
   background: ${({ theme }) => theme.core_deep};
   color: #dbe5f3;
   font-size: 23px;
 `;
-const ColumnSubHead = ({ infoBoxes, visualizer }: ColumnSubHeadProps) => css`
+const ColumnSubHead: any = ({
+  infoBoxes,
+  visualizer,
+}: ColumnSubHeadProps) => css`
   grid-template-columns:
     ${infoBoxes} ${infoBoxes} ${visualizer}
     ${infoBoxes} ${infoBoxes};
 `;
-export const SubHeadGlobal = styled.div<{ theme: DefaultTheme }>`
+export const SubHeadGlobal: any = styled.div<{ theme: DefaultTheme }>`
   ${DisplayGrid({
     justifyContent: "space-around",
     alignItems: "center",
@@ -239,13 +242,15 @@ export const SubHeadGlobal = styled.div<{ theme: DefaultTheme }>`
   }
 `;
 
-export const Button = styled.button<{ theme: DefaultTheme }>`
+export const Button: any = styled.button<{ theme: DefaultTheme }>`
   color: ${({ theme }) => theme.core_main};
   background: ${({ theme }) => theme.core_deep};
   border: 0;
 `;
 
-export const VisualizeButtonGlobal = styled(Button)<{ theme: DefaultTheme }>`
+export const VisualizeButtonGlobal: any = styled(Button)<{
+  theme: DefaultTheme;
+}>`
   color: #dbe5f3;
   transition: 0.25s;
   border: solid 2px ${({ theme }) => theme.core_accent};
@@ -274,7 +279,7 @@ export const VisualizeButtonGlobal = styled(Button)<{ theme: DefaultTheme }>`
   }
 `;
 
-export const InfoBox = styled.div<{ theme: DefaultTheme }>`
+export const InfoBox: any = styled.div<{ theme: DefaultTheme }>`
   display: grid;
   grid-template-columns: 1fr;
   box-sizing: border-box;
@@ -284,7 +289,7 @@ export const InfoBox = styled.div<{ theme: DefaultTheme }>`
   height: 70px;
 `;
 
-export const ToursGlobal = styled(ShepherdTour)<{ theme: DefaultTheme }>``;
+export const ToursGlobal: any = styled(ShepherdTour)<{ theme: DefaultTheme }>``;
 
 export const Visualizer = styled.div`
   height: 100vh;
@@ -300,7 +305,7 @@ interface SortingColumnInterface {
   color: string;
 }
 
-export const Column = styled.div<SortingColumnInterface>`
+export const Column: any = styled.div<SortingColumnInterface>`
   .node {
     animation: colorGradient 10s infinite;
   }
