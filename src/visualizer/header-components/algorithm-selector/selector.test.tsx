@@ -1,42 +1,29 @@
-import * as redux from "react-redux";
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
+import { Provider } from "react-redux";
+import { store } from "../../../store/store";
 import { findByTestAttribute } from "../../helpers/test-helpers";
 import { AlgorithmSelector } from "./selector-presentation";
 
 describe("Algorithm Selector Component", () => {
-  const useSelectorMock = jest.spyOn(redux, "useSelector");
-  const useDispatchMock = jest.spyOn(redux, "useDispatch");
-
   const setUp = (props = {}) => {
-    const component = shallow(<AlgorithmSelector {...props} />);
+    const component = mount(
+      <Provider store={store}>
+        <AlgorithmSelector {...props} />
+      </Provider>
+    );
     return component;
   };
 
   let wrapper: any;
-  beforeEach(() => {
-    useSelectorMock.mockClear();
-    useDispatchMock.mockClear();
-
-    useDispatchMock.mockReturnValue(jest.fn());
-    useSelectorMock.mockReturnValue({
-      algorithm: {
-        type: "",
-        timeComplexity: "",
-        spaceComplexity: "",
-      },
-    });
-
-    wrapper = setUp();
-  });
+  beforeEach(() => (wrapper = setUp()));
 
   describe("Selector Component Tests:", () => {
     describe("Render Component", () => {
       it("should render the component", () => {
-        const mockDispatch = jest.fn();
-        jest.mock("react-redux", () => ({
-          useDispatch: () => mockDispatch,
-        }));
-        const component = findByTestAttribute(wrapper, "algorithm-selector");
+        console.log(store.getState());
+        const component = findByTestAttribute(wrapper, "algorithm-selector").at(
+          1
+        );
         expect(component.length).toBe(1);
       });
 

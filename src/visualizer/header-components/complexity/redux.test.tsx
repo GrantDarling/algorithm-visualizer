@@ -20,14 +20,12 @@ describe("Algorithm Type Selector Component", () => {
 
   it("should render the component", () => {
     const component = wrapper;
-    console.log(store.getState());
 
     store.dispatch({
       type: "TOGGLE_START",
       global: store.getState(),
     });
 
-    console.log(store.getState());
     expect(store.getState().start).toBe(true);
     expect(component).toBe(component);
   });
