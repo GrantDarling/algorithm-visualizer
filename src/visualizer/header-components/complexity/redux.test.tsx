@@ -6,7 +6,7 @@ import EnzymeAdapter from "@wojtekmaj/enzyme-adapter-react-17";
 
 import { store } from "../../../store/store";
 import reducer from "../../../store/reducer";
-import { findByTestAttribute } from "../../helpers/helpers";
+import { findByTestAttribute } from "../../helpers/test-helpers";
 import { Complexity } from "./complexity-presentational";
 
 import { createStore } from "redux";
