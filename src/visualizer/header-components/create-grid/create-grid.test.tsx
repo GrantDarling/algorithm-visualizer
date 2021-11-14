@@ -1,30 +1,28 @@
-import * as redux from "react-redux";
-import { shallow } from "enzyme";
+import { Provider } from "react-redux";
+import { mount } from "enzyme";
+import { store } from "../../../store";
 import { findByTestAttribute } from "../../helpers/test-helpers";
 
 import { CreateGrid } from "./create-grid-presentational";
 
 describe("Create Grid Component", () => {
-  const useSelectorMock = jest.spyOn(redux, "useSelector");
-  const useDispatchMock = jest.spyOn(redux, "useDispatch");
-
-  const setUp = (props = {}) => {
-    const component = shallow(<CreateGrid {...props} />);
+  const setUp = () => {
+    const component = mount(
+      <Provider store={store}>
+        <CreateGrid />
+      </Provider>
+    );
     return component;
   };
 
   let wrapper: any;
   beforeEach(() => {
-    useSelectorMock.mockClear();
-    useDispatchMock.mockClear();
-    useDispatchMock.mockReturnValue(jest.fn());
-    useSelectorMock.mockReturnValue({ gridSize: 30 });
     wrapper = setUp();
   });
 
   describe("Renders Component", () => {
     it("should render the component", () => {
-      const component = findByTestAttribute(wrapper, "create-grid");
+      const component = findByTestAttribute(wrapper, "create-grid").at(1);
       expect(component.length).toBe(1);
     });
 
@@ -43,6 +41,12 @@ describe("Create Grid Component", () => {
     it("should not accept a non-number value", () => {
       const component = findByTestAttribute(wrapper, "create-grid-input");
       expect(component.props().type).toBe("number");
+    });
+
+    it("should be able to update value", () => {
+      const input = findByTestAttribute(wrapper, "create-grid-input");
+      input.props().value = 100;
+      expect(input.props().value).toBe(100);
     });
   });
 });
