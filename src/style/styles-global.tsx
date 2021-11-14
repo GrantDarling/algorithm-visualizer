@@ -141,7 +141,7 @@ export const GlobalStyles: any = createGlobalStyle<{ theme: DefaultTheme }>`
 // Media Queries
 
 @media only screen and (max-width: 550px) {
-  .button.dark  {
+  .tourButton {
     display: none;
   }
 }
@@ -272,6 +272,10 @@ export const Visualizer = styled.div`
   width: 100%;
   display: grid;
   grid-template-rows: auto auto 1fr;
+
+  @media only screen and (max-width: 550px) {
+    height: 90vh;
+  }
 `;
 
 /* Columns */
