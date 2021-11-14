@@ -1,11 +1,8 @@
 import * as redux from "react-redux";
-import { shallow, configure } from "enzyme";
-import EnzymeAdapter from "@wojtekmaj/enzyme-adapter-react-17";
+import { shallow } from "enzyme";
 
 import { findByTestAttribute } from "../../helpers/test-helpers";
 import { AlgorithmSelector } from "./selector-presentation";
-
-configure({ adapter: new EnzymeAdapter() });
 
 describe("Algorithm Selector Component", () => {
   const useSelectorMock = jest.spyOn(redux, "useSelector");

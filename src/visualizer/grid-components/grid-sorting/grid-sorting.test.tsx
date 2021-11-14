@@ -21,14 +21,14 @@ describe("algorithmSelector tests", () => {
   const grid = [[0], [0], [0]];
   const heights = [1, 2, 3, 4, 5, 6];
   const bubbleSort = [
-    { active: true, color: "#f6c26a", height: 1, location: [0] },
-    { active: false, color: "#f89f59", height: 2, location: [0] },
-    { active: false, color: "#fa7d47", height: 3, location: [0] },
+    { active: true, color: "#fbd4aa", height: 1, location: [0] },
+    { active: false, color: "#fcad89", height: 2, location: [0] },
+    { active: false, color: "#fd8667", height: 3, location: [0] },
   ];
   const selectionSort = [
-    { height: 1, location: [0], color: "#f6c26a", active: true },
-    { height: 2, location: [0], color: "#f89f59", active: true },
-    { height: 3, location: [0], color: "#fa7d47", active: false },
+    { height: 1, location: [0], color: "#fbd4aa", active: true },
+    { height: 2, location: [0], color: "#fcad89", active: true },
+    { height: 3, location: [0], color: "#fd8667", active: false },
   ];
 
   it("returns bubbleSort correctly", () => {
