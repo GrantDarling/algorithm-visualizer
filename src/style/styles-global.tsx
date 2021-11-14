@@ -1,43 +1,11 @@
+import { ShepherdTour } from "react-shepherd";
+import { ColumnSubHeadProps } from "./styles-interfaces";
+import { DisplayGrid, Box } from "./styles-mixins";
 import styled, {
   createGlobalStyle,
   DefaultTheme,
   css,
 } from "styled-components";
-
-import { ShepherdTour } from "react-shepherd";
-
-// Mixins
-interface DisplayGridProps {
-  justifyContent?: string;
-  alignItems?: string;
-  columnGap?: string;
-}
-
-interface BoxProps {
-  height?: string;
-  width?: string;
-}
-
-interface ColumnSubHeadProps {
-  infoBoxes: string;
-  visualizer: string;
-}
-
-const DisplayGrid: any = ({
-  justifyContent,
-  alignItems,
-  columnGap,
-}: DisplayGridProps) => css`
-  display: grid;
-  justify-content: ${justifyContent};
-  align-items: ${alignItems};
-  column-gap: ${columnGap};
-`;
-
-const Box: any = ({ height, width }: BoxProps) => css`
-  height: ${height};
-  width: ${width};
-`;
 
 export const GlobalStyles: any = createGlobalStyle<{ theme: DefaultTheme }>`
 	html,
@@ -50,107 +18,124 @@ export const GlobalStyles: any = createGlobalStyle<{ theme: DefaultTheme }>`
 		font-size: 12px;
 	}
 
-	#grid-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
-		border-top: solid 1px ${({ theme }) => theme.core_accent};;
-	}
-
-	#grid-container > .column {
-		display: grid;
-	}
-
 	body {
 		font-family: ${(props) => props.theme.font_family}
 	}
 
-	// Shepard Styling
-.shepherd-content {
-  background: ${({ theme }) => theme.core_main + "33"};
-  padding-top: 30px;
-  color: #dbe5f3;
-  max-width: 400px;
-  border: solid 1px #dbe5f3;
-  margin: 15px;
-}
+	#grid-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
+		border-top: solid 1px ${({ theme }) => theme.core_accent};
 
-.shepherd-content h3,
-.shepherd-content div {
-  padding: 0 30px 0 30px;
-  text-align: block;
-}
-
-.highlight {
-  border: solid 1px ${({ theme }) => theme.core_accent};
-}
-
-.shepherd-cancel-icon {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  padding: 5px 10px;
-  border: solid 1px #dbe5f3;
-	background: #dbe5f3;
-}
-
-svg.shepherd-modal-is-visible.shepherd-modal-overlay-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0.8;
-}
-
-.shepherd-footer button {
-	box-sizing: border-box;
-  width: 50%;
-  margin-top: 30px;
-	background:  #dbe5f3;
-  height: 40px;
-	border: 0;
-	border-top: solid 1px ${({ theme }) => theme.core_accent};
-}
-.shepherd-footer button:hover {
-		box-sizing: border-box;
-	background: ${({ theme }) => theme.core_main + "10"};
-	border: 0;
-	border-top: solid 1px ${({ theme }) => theme.core_accent};
-}
-
-.shepherd-cancel-icon:hover  {
-	background: ${({ theme }) => theme.core_accent};
-}
-
-.shepherd-footer button:hover,
-.shepherd-cancel-icon:hover {
-	color: #dbe5f3;
-	outline: 0;
-}
-
-.shepherd-arrow {
-  height: 15px;
-  width: 15px;
-  color: #dbe5f3;
-}
-
-.button.dark {
-  cursor: pointer;
-  position: absolute;
-	background: ${({ theme }) => theme.core_deep};
-	color: #dbe5f3;
-	font-family: ${({ theme }) => theme.font_family};
-	border: solid 1px ${({ theme }) => theme.core_accent};
-  right: 20px;
-  padding: 5px 10px;
-
-	&:hover {
-		border: solid 2px ${({ theme }) => theme.core_deep};
-		animation: pulse 0.7s;
+		& > .column {
+			display: grid;
+		}
 	}
-}
+
+
+	select, input {
+			border: 0;
+			background-color: #ffffff50;
+			color: #dbe5f3;
+			padding-right: 5px;
+	}
+
+  .shepherd-content {
+    background: ${({ theme }) => theme.core_main + "33"};
+  }
+
+	.highlight {
+    border: solid 1px ${({ theme }) => theme.core_accent};
+  }
+
+  .shepherd-footer button {
+    border-top: solid 1px ${({ theme }) => theme.core_accent};
+
+    &:hover {
+      background: ${({ theme }) => theme.core_main + "10"};
+      border-top: solid 1px ${({ theme }) => theme.core_accent};
+    }
+  }
+	
+	.shepherd-cancel-icon:hover {
+    background: ${({ theme }) => theme.core_accent};
+  }
+
+	.tourButton {
+    background: ${({ theme }) => theme.core_deep};
+    font-family: ${({ theme }) => theme.font_family};
+    border: solid 1px ${({ theme }) => theme.core_accent};
+
+    &:hover {
+      border: solid 2px ${({ theme }) => theme.core_deep};
+    }
+  }
+
+	.shepherd-content {
+    padding-top: 30px;
+    color: #dbe5f3;
+    max-width: 400px;
+    border: solid 1px #dbe5f3;
+    margin: 15px;
+
+    h3,
+    div {
+      padding: 0 30px 0 30px;
+      text-align: block;
+    }
+  }
+
+  .shepherd-cancel-icon {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 10px;
+    border: solid 1px #dbe5f3;
+    background: #dbe5f3;
+  }
+
+  .shepherd-modal-is-visible {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+  }
+
+  .shepherd-footer button {
+    box-sizing: border-box;
+    width: 50%;
+    margin-top: 30px;
+    background: #dbe5f3;
+    height: 40px;
+    border: 0;
+
+    &:hover {
+      box-sizing: border-box;
+      border: 0;
+    }
+  }
+
+  .shepherd-footer button:hover,
+  .shepherd-cancel-icon:hover {
+    color: #dbe5f3;
+    outline: 0;
+  }
+
+  .tourButton {
+    cursor: pointer;
+    position: absolute;
+    color: #dbe5f3;
+    right: 20px;
+    padding: 5px 10px;
+
+    &:hover {
+      animation: pulse 0.7s;
+    }
+  }
 
 
 // Media Queries
@@ -185,15 +170,6 @@ svg.shepherd-modal-is-visible.shepherd-modal-overlay-container {
       border-bottom: solid ${({ theme }) => theme.core_main} 1px;
     }
   }
-
-
-	select, input {
-		// border-radius: 10px;
-		border: 0;
-		background-color: #ffffff50;
-		color: #dbe5f3;
-		padding-right: 5px;
-}
 `;
 
 /* Headers */

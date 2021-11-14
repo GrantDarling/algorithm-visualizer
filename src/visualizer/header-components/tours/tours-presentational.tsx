@@ -5,7 +5,7 @@ import { ToursContainer } from "./tours-styles";
 function Button() {
   const { tour } = useTours();
   return (
-    <button className="button dark" onClick={tour.start}>
+    <button className="tourButton" onClick={tour.start}>
       Take The Tour!
     </button>
   );

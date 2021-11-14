@@ -3,7 +3,6 @@ import { DefaultTheme } from "styled-components";
 export const main: DefaultTheme = {
   core_main: "#0B5563",
   core_deep: "#040215",
-
   core_light: "#0f0327",
   core_accent: "#ff816c",
   core_sort_start: "#ff3825",
