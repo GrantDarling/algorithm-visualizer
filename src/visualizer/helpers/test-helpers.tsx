@@ -6,8 +6,8 @@ export const findByTestAttribute = (component: any, attribute: string) => {
   return wrapper;
 };
 
-export const dispatchAlgorithm = (algorithmID: string) => {
-  const algorithm = algorithms.find((algorithm) => {
+export const dispatchAlgorithm = (algorithmID: string | undefined) => {
+  const algorithm: any = algorithms.find((algorithm) => {
     return algorithm.id === algorithmID;
   });
   return {
@@ -15,9 +15,9 @@ export const dispatchAlgorithm = (algorithmID: string) => {
     global: {
       ...store.getState(),
       algorithm: {
-        type: algorithm.value,
-        timeComplexity: algorithm.complexity.time,
-        spaceComplexity: algorithm.complexity.space,
+        type: algorithm?.value,
+        timeComplexity: algorithm?.complexity.time,
+        spaceComplexity: algorithm?.complexity.space,
       },
     },
   };
