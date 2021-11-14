@@ -1,7 +1,7 @@
 import * as helpers from "./helpers";
 
-describe("helper tests:", () => {
-  describe("shuffle tests:", () => {
+describe("Helper Tests:", () => {
+  describe("shuffle() tests:", () => {
     it("maintains the array length", () => {
       const array = [1, 2, 3, 4, 5, 6];
       const shuffledArray = helpers.shuffle(array);
@@ -21,7 +21,7 @@ describe("helper tests:", () => {
     });
   });
 
-  describe("generateColorGradientArray tests:", () => {
+  describe("generateColorGradientArray() tests:", () => {
     const colorStart = "#ff3825";
     const colorEnd = "#f4e57c";
     const colorsLength = 10;
