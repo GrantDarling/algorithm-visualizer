@@ -9,9 +9,7 @@ describe("Algorithm Type Selector Component", () => {
   };
 
   let wrapper: any;
-  beforeEach(() => {
-    wrapper = setUp();
-  });
+  beforeEach(() => (wrapper = setUp()));
 
   describe("Render Component", () => {
     it("should render the component", () => {

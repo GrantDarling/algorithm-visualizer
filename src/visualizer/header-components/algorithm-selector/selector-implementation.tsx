@@ -18,43 +18,12 @@ const useSelectorImplementation = () => {
     const selectedOption = e.target.querySelector(
       `option[value="${e.target.value}"]`
     );
-
     setAlgorithm({
       type: e.target.value,
-      spaceComplexity: selectedOption.getAttribute("data-timecomplexity"),
-      timeComplexity: selectedOption.getAttribute("data-spacecomplexity"),
+      timeComplexity: selectedOption.getAttribute("data-timecomplexity"),
+      spaceComplexity: selectedOption.getAttribute("data-spacecomplexity"),
     });
   }
-
-  const options = [
-    {
-      id: "bubble-sort",
-      algorithm: "Bubble Sort",
-      value: "bubbleSort",
-      complexity: {
-        time: "O(n²)",
-        space: "O(1)",
-      },
-    },
-    {
-      id: "selection-sort",
-      algorithm: "Selection Sort",
-      value: "selectionSort",
-      complexity: {
-        time: "O(n²)",
-        space: "O(1)",
-      },
-    },
-    {
-      id: "heap-sort",
-      algorithm: "Heap Sort",
-      value: "heapSort",
-      complexity: {
-        time: "O(nlogn)",
-        space: "O(1)",
-      },
-    },
-  ];
 
   useEffect(() => {
     dispatch(
@@ -69,7 +38,7 @@ const useSelectorImplementation = () => {
     );
   }, [dispatch, algorithm, global]);
 
-  return { algorithm, handleSelectChange, options };
+  return { algorithm, handleSelectChange };
 };
 
 export default useSelectorImplementation;

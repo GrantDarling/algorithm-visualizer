@@ -1,9 +1,9 @@
 import { AlgorithmSelectorContainer } from "./selector-styles";
 import useSelectorImplementation from "./selector-implementation";
+import { algorithms } from "./selector-business";
 
 export const AlgorithmSelector = () => {
-  const { algorithm, handleSelectChange, options } =
-    useSelectorImplementation();
+  const { algorithm, handleSelectChange } = useSelectorImplementation();
 
   return (
     <AlgorithmSelectorContainer id="selector" data-test="algorithm-selector">
@@ -18,7 +18,7 @@ export const AlgorithmSelector = () => {
         data-spacecomplexity={algorithm.spaceComplexity}
         onChange={handleSelectChange}
       >
-        {options.map((option) => {
+        {algorithms.map((option) => {
           return (
             <option
               key={option.id}

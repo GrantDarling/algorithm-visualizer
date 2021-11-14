@@ -1,6 +1,6 @@
 import { mount } from "enzyme";
 import { Provider } from "react-redux";
-import { store } from "../../../store/store";
+import { store } from "../../../store";
 import { findByTestAttribute } from "../../helpers/test-helpers";
 import { AlgorithmSelector } from "./selector-presentation";
 
@@ -20,7 +20,6 @@ describe("Algorithm Selector Component", () => {
   describe("Selector Component Tests:", () => {
     describe("Render Component", () => {
       it("should render the component", () => {
-        console.log(store.getState());
         const component = findByTestAttribute(wrapper, "algorithm-selector").at(
           1
         );
