@@ -16,6 +16,7 @@ export const GlobalStyles: any = createGlobalStyle<{ theme: DefaultTheme }>`
 		height: 100%;
 		background: black;
 		font-size: 12px;
+		margin: 0;
 	}
 
 	body {
