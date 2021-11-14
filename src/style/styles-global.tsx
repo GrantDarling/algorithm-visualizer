@@ -274,7 +274,7 @@ export const Visualizer = styled.div`
   grid-template-rows: auto auto 1fr;
 
   @media only screen and (max-width: 550px) {
-    height: 90vh;
+    height: 85vh;
   }
 `;
 
