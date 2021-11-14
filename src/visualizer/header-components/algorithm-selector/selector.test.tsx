@@ -1,6 +1,5 @@
 import * as redux from "react-redux";
 import { shallow } from "enzyme";
-
 import { findByTestAttribute } from "../../helpers/test-helpers";
 import { AlgorithmSelector } from "./selector-presentation";
 

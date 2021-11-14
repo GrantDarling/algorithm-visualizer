@@ -1,11 +1,8 @@
 import * as redux from "react-redux";
-import { shallow, configure } from "enzyme";
-import EnzymeAdapter from "@wojtekmaj/enzyme-adapter-react-17";
+import { shallow } from "enzyme";
 import { findByTestAttribute } from "../../helpers/test-helpers";
 
 import { CreateGrid } from "./create-grid-presentational";
-
-configure({ adapter: new EnzymeAdapter() });
 
 describe("Create Grid Component", () => {
   const useSelectorMock = jest.spyOn(redux, "useSelector");
