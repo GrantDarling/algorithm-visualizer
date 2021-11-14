@@ -1,6 +1,6 @@
 import { DefaultTheme } from "styled-components";
 
-export const main: DefaultTheme = {
+const main: DefaultTheme = {
   core_main: "#0B5563",
   core_deep: "#040215",
   core_light: "#0f0327",
@@ -10,7 +10,7 @@ export const main: DefaultTheme = {
   font_family: "'Share Tech Mono', monospace;",
 };
 
-export const seagreen: DefaultTheme = {
+const seagreen: DefaultTheme = {
   core_main: "#004445",
   core_deep: "#021C1E",
   core_light: "#2C7873",
@@ -19,3 +19,5 @@ export const seagreen: DefaultTheme = {
   core_sort_end: "#f4e57c",
   font_family: "'Share Tech Mono', monospace;",
 };
+
+export { main, seagreen };

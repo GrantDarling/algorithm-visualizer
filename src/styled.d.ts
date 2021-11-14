@@ -1,7 +1,6 @@
-import "styled-components";
+require("styled-components");
 
 declare module "styled-components" {
-  // export interface DefaultTheme extends ITheme {}
   export interface DefaultTheme {
     core_main: string;
     core_deep: string;
