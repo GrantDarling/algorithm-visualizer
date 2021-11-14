@@ -1,16 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import { main } from "../style/styles-themes";
-
-const initialState: GlobalState = {
-  start: false,
-  gridSize: 20,
-  algorithm: {
-    type: "bubbleSort",
-    timeComplexity: "O(n²)",
-    spaceComplexity: "O(1)",
-  },
-  theme: main,
-};
+import { initialState } from "./initialState";
 
 const reducer = (
   state: GlobalState = initialState,
