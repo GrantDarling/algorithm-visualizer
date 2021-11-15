@@ -8,7 +8,7 @@ const useCreateGridImplementation = () => {
   const globalState = useSelector((state: GlobalState) => state);
   const [global] = useState(globalState);
   const [grid, setGrid] = useState(global.gridSize);
-  const [limit] = useState(50);
+  const [limit] = useState(35);
 
   useEffect(() => {
     dispatch(setGridSize(global, grid));

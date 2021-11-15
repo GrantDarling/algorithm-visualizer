@@ -11,9 +11,8 @@ export const bubbleSortInit = (bars: number[]) => {
   let bubbleSortInit: number[][][] = bubbleSort(bars);
   let arrays: number[][] = bubbleSortInit[0];
   let highlights: number[][] = bubbleSortInit[1];
-  let arraySize = bars.length;
 
-  return { counter, arrays, highlights, arraySize };
+  return { counter, arrays, highlights };
 };
 
 function initialize(barHeights: any) {

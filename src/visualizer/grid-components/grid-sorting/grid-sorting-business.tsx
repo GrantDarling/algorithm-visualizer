@@ -1,7 +1,7 @@
 import { shuffle } from "../../helpers/helpers";
 import { generateColorGradientArray } from "../../helpers/helpers";
 import { bubbleSortAnimation } from "../../algorithms/bubbleSort";
-import { selectionSort } from "../../algorithms/selectionSort";
+import { selectionSortAnimation } from "../../algorithms/selectionSort";
 import { heapSortAnimation } from "../../algorithms/heapSort";
 import { insertionSortAnimation } from "../../algorithms/insertionSort";
 
@@ -72,7 +72,7 @@ export const algorithmSelector = (
     case "bubbleSort":
       return bubbleSortAnimation(grid, heights, restart);
     case "selectionSort":
-      return selectionSort(grid, heights, restart);
+      return selectionSortAnimation(grid, heights, restart);
     case "heapSort":
       return heapSortAnimation(grid, heights, restart);
     case "insertionSort":

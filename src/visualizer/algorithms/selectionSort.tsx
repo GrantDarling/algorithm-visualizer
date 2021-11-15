@@ -1,77 +1,61 @@
 import { buildBars } from "../grid-components/grid-sorting/grid-sorting-business";
+import { victoryLap } from "./algorithm-helpers";
 
 let isInitialized: boolean = false;
-let outerLoop: number;
-let activeBar: number;
-let victoryLap: number;
-let currentMinBar: number;
-let advanceInnerLoop: number;
+let counter: number;
+let arrays: number[][];
+let highlights: number[][];
 
 const selectionSortInit = (bars: number[]) => {
-  let activeBar: number = 0;
-  let outerLoop: number = 0;
-  let currentMinBar: number = bars[0];
-  let victoryLap: number = 0;
-  let advanceInnerLoop: number = 0;
+  let counter: number = 0;
+  let selectionSortInit: number[][][] = selectionSort(bars);
+  let arrays: number[][] = selectionSortInit[0];
+  let highlights: number[][] = selectionSortInit[1];
 
-  return {
-    activeBar,
-    outerLoop,
-    victoryLap,
-    currentMinBar,
-    advanceInnerLoop,
-  };
+  return { counter, arrays, highlights };
 };
 
 function initialize(barHeights: any) {
   isInitialized = true;
-  ({ outerLoop, activeBar, currentMinBar, victoryLap, advanceInnerLoop } =
-    selectionSortInit(barHeights));
+  ({ counter, arrays, highlights } = selectionSortInit(barHeights));
 }
 
-function resetInnerLoop(barHeights: any) {
-  advanceInnerLoop++;
-  activeBar = advanceInnerLoop;
-  currentMinBar = barHeights[activeBar];
+function selectionSort(array: number[]) {
+  const arrays: number[][] = [];
+  const highlights: number[][] = [];
+
+  for (let i = 0; i < array.length; i++) {
+    let min = i;
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[j] < array[min]) {
+        min = j;
+      }
+      arrays.push([...array]);
+      highlights.push([j, min]);
+    }
+    if (min !== i) {
+      let tmp = array[i];
+      array[i] = array[min];
+      array[min] = tmp;
+
+      arrays.push([...array]);
+      highlights.push([i, min]);
+    }
+  }
+  return [arrays, highlights];
 }
 
-function swap(barHeights: any) {
-  let currentMinBarHeight: number =
-    barHeights[barHeights.indexOf(currentMinBar)];
-  barHeights[barHeights.indexOf(currentMinBar)] = barHeights[outerLoop];
-  barHeights[outerLoop] = currentMinBarHeight;
-}
-
-export const selectionSort = (
+export const selectionSortAnimation = (
   grid: number[][],
-  barHeights: number[],
+  array: number[],
   restart: boolean
 ) => {
-  if (!isInitialized || restart) initialize(barHeights);
+  if (!isInitialized || restart) initialize(array);
 
-  activeBar++;
-
-  // 1. loop through bars
-  if (activeBar < barHeights.length) {
-    let minItemIndex: number = barHeights.indexOf(currentMinBar);
-
-    if (barHeights[activeBar] < currentMinBar) {
-      currentMinBar = barHeights[activeBar];
-    }
-
-    return buildBars(grid, barHeights, [minItemIndex, activeBar]);
-    // 2. swap heights, advance outerloop & restart
-  } else if (outerLoop < barHeights.length) {
-    swap(barHeights);
-    outerLoop++;
-    resetInnerLoop(barHeights);
-
-    return buildBars(grid, barHeights, [activeBar, activeBar]);
-    // 3. final loop
-  } else if (victoryLap < barHeights.length) {
-    victoryLap++;
-    return buildBars(grid, barHeights, [victoryLap, victoryLap - 1]);
+  if (counter < arrays.length) {
+    const animate = buildBars(grid, arrays[counter], highlights[counter]);
+    counter++;
+    return animate;
   }
-
-  return undefined;
+  return victoryLap(array.length, grid, array);
 };
