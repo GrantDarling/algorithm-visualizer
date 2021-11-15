@@ -1,4 +1,6 @@
 import { useEffect, useState, useRef } from "react";
+import { browserName, isBrowser } from "react-device-detect";
+
 import {
   buildBars,
   initiateBarHeights,
@@ -34,12 +36,24 @@ export const useSortingGrid = ({ grid }: SortingGridProps) => {
   };
 
   useEffect(() => initalize(grid), [grid]);
+
   useEffect(() => {
     setAnimate(global.start);
     setHeights(initiateBarHeights(grid));
   }, [global.start, grid]);
 
   useEffect(() => {
+    console.log(`${browserName} ${isBrowser},`);
+  }, []);
+
+  useEffect(() => {
+    if (browserName === "Safari" && isBrowser) {
+      alert(
+        "Sorry, the visualizer currently does not work on the Safari browser and I haven't found the time to fix this. Try it out on chrome, firefox or mobile!"
+      );
+      return;
+    }
+
     if (animate) {
       const animate = () => {
         const algorithm: BarState[] | undefined = algorithmSelector(
@@ -51,18 +65,18 @@ export const useSortingGrid = ({ grid }: SortingGridProps) => {
         if (algorithm !== undefined) {
           setBars(algorithm);
           setRestart(false);
-          animateID.current = requestAnimationFrame(animate);
+          animateID.current = window.requestAnimationFrame(animate);
         } else if (global.start) {
           dispatch(toggleStart(global));
         }
       };
-      animateID.current = requestAnimationFrame(animate);
+      animateID.current = window.requestAnimationFrame(animate);
     } else {
       setRestart(true);
     }
 
     return () => {
-      cancelAnimationFrame(animateID.current);
+      window.cancelAnimationFrame(animateID.current);
     };
   }, [animate, grid, heights, restart, global, dispatch]);
 
