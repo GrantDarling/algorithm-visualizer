@@ -11,13 +11,11 @@ export const insertionSortInit = (bars: number[]) => {
   let insertionSortInit: number[][][] = insertionSort(bars);
   let arrays: number[][] = insertionSortInit[0];
   let highlights: number[][] = insertionSortInit[1];
-  let arraySize = bars.length;
 
   return {
     counter,
     arrays,
     highlights,
-    arraySize,
   };
 };
 
