@@ -50,7 +50,7 @@ function initialize(barHeights: any) {
   ({ counter, arrays, highlights, arraySize } = insertionSortInit(barHeights));
 }
 
-export const bubbleSort = (
+export const insertionSortAnimation = (
   grid: number[][],
   array: number[],
   restart: boolean
