@@ -58,5 +58,5 @@ export const insertionSortAnimation = (
     counter++;
     return animate;
   }
-  return victoryLap(array.length, grid, array);
+  return victoryLap(array.length, grid, arrays[arrays.length - 1]);
 };
