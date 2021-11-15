@@ -22,6 +22,11 @@ export const insertionSortInit = (bars: number[]) => {
   };
 };
 
+function initialize(barHeights: any) {
+  isInitialized = true;
+  ({ counter, arrays, highlights, arraySize } = insertionSortInit(barHeights));
+}
+
 const insertionSort = (array: number[]) => {
   let arrays: number[][] = [];
   let highlights: number[][] = [];
@@ -44,11 +49,6 @@ const insertionSort = (array: number[]) => {
   }
   return [arrays, highlights];
 };
-
-function initialize(barHeights: any) {
-  isInitialized = true;
-  ({ counter, arrays, highlights, arraySize } = insertionSortInit(barHeights));
-}
 
 export const insertionSortAnimation = (
   grid: number[][],
