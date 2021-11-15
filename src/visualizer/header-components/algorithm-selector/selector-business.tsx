@@ -26,4 +26,13 @@ export const algorithms = [
       space: "O(1)",
     },
   },
+  {
+    id: "insertion-sort",
+    algorithm: "Insertion Sort",
+    value: "insertionSort",
+    complexity: {
+      time: "O(n²)",
+      space: "O(1)",
+    },
+  },
 ];

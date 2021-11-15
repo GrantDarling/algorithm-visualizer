@@ -89,7 +89,21 @@ describe("Algorithm Complexity Component", () => {
         });
 
         it("should display selectionsort space complexity", () => {
-          store.dispatch(dispatchAlgorithm("bubble-sort"));
+          store.dispatch(dispatchAlgorithm("insertion-sort"));
+          const spaceComplexity = component.childAt(2).text();
+          expect(spaceComplexity).toBe("Space: O(1)");
+        });
+      });
+
+      describe("InsertionSort Complexities:", () => {
+        it("should display selectionsort time complexity", () => {
+          store.dispatch(dispatchAlgorithm("insertion-sort"));
+          const timeComplexity = component.childAt(1).text();
+          expect(timeComplexity).toBe("Time: O(n²)");
+        });
+
+        it("should display selectionsort space complexity", () => {
+          store.dispatch(dispatchAlgorithm("insertion-sort"));
           const spaceComplexity = component.childAt(2).text();
           expect(spaceComplexity).toBe("Space: O(1)");
         });

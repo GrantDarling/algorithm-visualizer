@@ -3,6 +3,7 @@ import { generateColorGradientArray } from "../../helpers/helpers";
 import { bubbleSort } from "../../algorithms/bubbleSort";
 import { selectionSort } from "../../algorithms/selectionSort";
 import { heapSort } from "../../algorithms/heapSort";
+import { insertionSortAnimation } from "../../algorithms/insertionSort";
 
 interface Bar {
   height: number;
@@ -74,6 +75,8 @@ export const algorithmSelector = (
       return selectionSort(grid, heights, restart);
     case "heapSort":
       return heapSort(grid, heights, restart);
+    case "insertionSort":
+      return insertionSortAnimation(grid, heights, restart);
     default:
       return undefined;
   }

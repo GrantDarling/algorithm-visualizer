@@ -33,7 +33,7 @@ describe("Algorithm Selector Component", () => {
 
       it("should render the options", () => {
         const component = findByTestAttribute(wrapper, "algorithm-option");
-        expect(component.length).toBe(3);
+        expect(component.length).toBe(4);
       });
     });
 
@@ -92,6 +92,26 @@ describe("Algorithm Selector Component", () => {
 
       it("should set the correct heap sort space complexity", () => {
         const option = wrapper.find('option[data-testid="heap-sort"]');
+        option.simulate("click");
+        expect(option.props()["data-spacecomplexity"]).toBe("O(1)");
+      });
+    });
+
+    describe("Insertion Sort Option", () => {
+      it("should set the correct insertion sort type", () => {
+        const option = wrapper.find('option[data-testid="insertion-sort"]');
+        option.simulate("click");
+        expect(option.props().value).toBe("insertionSort");
+      });
+
+      it("should set the correct insertion sort time complexity", () => {
+        const option = wrapper.find('option[data-testid="insertion-sort"]');
+        option.simulate("click");
+        expect(option.props()["data-timecomplexity"]).toBe("O(n²)");
+      });
+
+      it("should set the correct insertion sort space complexity", () => {
+        const option = wrapper.find('option[data-testid="insertion-sort"]');
         option.simulate("click");
         expect(option.props()["data-spacecomplexity"]).toBe("O(1)");
       });
