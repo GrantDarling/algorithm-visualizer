@@ -5,7 +5,6 @@ let isInitialized: boolean = false;
 let counter: number;
 let arrays: number[][];
 let highlights: number[][];
-let arraySize: number;
 
 export const insertionSortInit = (bars: number[]) => {
   let counter: number = 0;
@@ -24,7 +23,7 @@ export const insertionSortInit = (bars: number[]) => {
 
 function initialize(barHeights: any) {
   isInitialized = true;
-  ({ counter, arrays, highlights, arraySize } = insertionSortInit(barHeights));
+  ({ counter, arrays, highlights } = insertionSortInit(barHeights));
 }
 
 const insertionSort = (array: number[]) => {
@@ -61,5 +60,5 @@ export const insertionSortAnimation = (
     counter++;
     return animate;
   }
-  return victoryLap(arraySize, grid, array);
+  return victoryLap(array.length, grid, array);
 };

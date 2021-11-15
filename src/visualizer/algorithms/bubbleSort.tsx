@@ -1,53 +1,55 @@
 import { buildBars } from "../grid-components/grid-sorting/grid-sorting-business";
+import { victoryLap } from "./algorithm-helpers";
 
 let isInitialized: boolean = false;
-let victoryLap: number;
-let outerLoop: number;
-let activeBar: number;
-let innerLoopMax: number;
+let counter: number;
+let arrays: number[][];
+let highlights: number[][];
 
 export const bubbleSortInit = (bars: number[]) => {
-  let activeBar: number = 0;
-  let outerLoop: number = 0;
-  let innerLoopMax: number = bars.length;
-  let victoryLap: number = 0;
+  let counter: number = 0;
+  let bubbleSortInit: number[][][] = bubbleSort(bars);
+  let arrays: number[][] = bubbleSortInit[0];
+  let highlights: number[][] = bubbleSortInit[1];
+  let arraySize = bars.length;
 
-  return { activeBar, outerLoop, innerLoopMax, victoryLap };
+  return { counter, arrays, highlights, arraySize };
 };
 
 function initialize(barHeights: any) {
   isInitialized = true;
-  ({ outerLoop, activeBar, innerLoopMax, victoryLap } =
-    bubbleSortInit(barHeights));
+  ({ counter, arrays, highlights } = bubbleSortInit(barHeights));
 }
 
-export const bubbleSort = (
+const bubbleSort = (array: number[]) => {
+  const arrays: number[][] = [];
+  const highlights: number[][] = [];
+
+  for (var i = 0; i < array.length; i++) {
+    for (var j = 0; j < array.length - i - 1; j++) {
+      if (array[j] > array[j + 1]) {
+        var tmp = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = tmp;
+      }
+      arrays.push([...array]);
+      highlights.push([j, j + 1]);
+    }
+  }
+  return [arrays, highlights];
+};
+
+export const bubbleSortAnimation = (
   grid: number[][],
-  barHeights: number[],
+  array: number[],
   restart: boolean
 ) => {
-  if (!isInitialized || restart) initialize(barHeights);
+  if (!isInitialized || restart) initialize(array);
 
-  activeBar++;
-
-  if (activeBar >= innerLoopMax) {
-    activeBar = 1;
-    innerLoopMax--;
-    outerLoop++;
+  if (counter < arrays.length) {
+    const animate = buildBars(grid, arrays[counter], highlights[counter]);
+    counter++;
+    return animate;
   }
-
-  if (outerLoop < barHeights.length) {
-    let i: number = activeBar - 1;
-    if (barHeights[i] > barHeights[i + 1]) {
-      let bars: any = buildBars(grid, barHeights, [i, i - 1]);
-      [barHeights[i], barHeights[i + 1]] = [barHeights[i + 1], barHeights[i]];
-      return bars;
-    }
-    return buildBars(grid, barHeights, [i, i - 1]);
-  } else if (victoryLap < barHeights.length) {
-    victoryLap++;
-    return buildBars(grid, barHeights, [victoryLap, victoryLap - 1]);
-  }
-
-  return undefined;
+  return victoryLap(array.length, grid, array);
 };
