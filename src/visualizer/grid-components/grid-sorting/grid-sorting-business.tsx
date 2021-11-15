@@ -1,6 +1,6 @@
 import { shuffle } from "../../helpers/helpers";
 import { generateColorGradientArray } from "../../helpers/helpers";
-import { bubbleSort } from "../../algorithms/bubbleSort";
+import { bubbleSort } from "../../algorithms/insertionSort";
 import { selectionSort } from "../../algorithms/selectionSort";
 import { heapSort } from "../../algorithms/heapSort";
 
