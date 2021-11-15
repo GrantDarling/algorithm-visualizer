@@ -22,7 +22,7 @@ export const insertionSortInit = (bars: number[]) => {
   };
 };
 
-function insertionSort(array: number[]) {
+const insertionSort = (array: number[]) => {
   let arrays: number[][] = [];
   let highlights: number[][] = [];
 
@@ -43,7 +43,7 @@ function insertionSort(array: number[]) {
     highlights.push([i, j + 1]);
   }
   return [arrays, highlights];
-}
+};
 
 function initialize(barHeights: any) {
   isInitialized = true;
